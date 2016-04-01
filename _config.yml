@@ -1,0 +1,18 @@
+name: "chris briones"
+description: "A blog by Christian Briones."
+safe: true
+lsi: false
+port: 3000
+
+paginate: 10
+markdown: redcarpet
+redcarpet:
+    extensions: ["no_intra_emphasis", "fenced_code_blocks", "autolink",
+                 "tables", "with_toc_data", "strikethrough", "smart"]
+permalink: /posts/:year/:month/:day/:title/
+highlighter: rouge
+gems: [jekyll-paginate]
+
+author:
+    name: "Christian Briones"
+    github: cwbriones

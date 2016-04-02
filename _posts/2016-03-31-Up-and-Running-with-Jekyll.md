@@ -7,19 +7,19 @@ published: true
 
 Here's that famous quote from hipster ipsum:
 
->Actually deep v letterpress, High Life semiotics viral umami Godard YOLO +1 
->chillwave retro banjo sartorial farm-to-table. Mumblecore pug selvage Banksy +1 
+>Actually deep v letterpress, High Life semiotics viral umami Godard YOLO +1
+>chillwave retro banjo sartorial farm-to-table. Mumblecore pug selvage Banksy +1
 >chambray, Odd Future blog butcher lomo. Chillwave viral gluten-free wolf Austin,
->selvage 90's ennui skateboard. Trust fund letterpress hella yr synth leggings, 
->skateboard literally blog salvia jean shorts forage Terry Richardson wolf food 
->truck. Butcher gastropub cred, American Apparel Tonx McSweeney's kogi distillery 
->slow-carb twee. Meggings Brooklyn selfies Pinterest gastropub. Readymade Terry 
->Richardson kale chips mustache 8-bit YOLO, Marfa slow-carb deep v 
+>selvage 90's ennui skateboard. Trust fund letterpress hella yr synth leggings,
+>skateboard literally blog salvia jean shorts forage Terry Richardson wolf food
+>truck. Butcher gastropub cred, American Apparel Tonx McSweeney's kogi distillery
+>slow-carb twee. Meggings Brooklyn selfies Pinterest gastropub. Readymade Terry
+>Richardson kale chips mustache 8-bit YOLO, Marfa slow-carb deep v
 >wayfarers DIY iPhone Carles.
 
 And now for some code:
 
-```rust
+{% highlight rust %}
 extern crate rand;
 
 use rand::{thread_rng, Rng};
@@ -48,9 +48,9 @@ fn partition<T: Num>(items: &mut [T], lo: usize, hi: usize) {
     items.swap(right, lo);
     return right;
 }
-```
+{% endhighlight %}
 
-I also could have put a small piece here like this: `$ echo Hello World!`. 
+I also could have put a small piece here like this: `$ echo Hello World!`.
 
 As well as lists...
 

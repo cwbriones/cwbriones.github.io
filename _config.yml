@@ -4,15 +4,17 @@ safe: true
 lsi: false
 port: 3000
 
-paginate: 10
-markdown: redcarpet
-redcarpet:
-    extensions: ["no_intra_emphasis", "fenced_code_blocks", "autolink",
-                 "tables", "with_toc_data", "strikethrough", "smart"]
-permalink: /posts/:year/:month/:day/:title/
+markdown: kramdown
 highlighter: rouge
+kramdown:
+  input: GFM
+  hard_wrap: false
+  syntax_highlighter: rouge
+paginate: 10
+permalink: /posts/:year/:month/:day/:title/
+
 gems: [jekyll-paginate]
 
 author:
-    name: "Christian Briones"
-    github: cwbriones
+  name: "Christian Briones"
+  github: cwbriones

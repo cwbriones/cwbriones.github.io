@@ -1,9 +1,8 @@
 task :default => [:serve]
 
-desc "Build and watch the site"
-
+desc "Build the site"
 task :build do
-  system 'bundle exec jekyll build --watch'
+  system 'bundle exec jekyll build'
 end
 
 desc "Serve and watch the site in development mode"

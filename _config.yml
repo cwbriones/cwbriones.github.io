@@ -1,20 +1,56 @@
-name: "chris briones"
+# Site Info
+title: "chris briones"
 description: "A blog by Christian Briones."
-safe: true
-lsi: false
-port: 3000
+# google_verify:      # Put your Google Verification here
+# google_analytics:   # Put your Google Analytics code
 
-markdown: kramdown
+# Author Info
+author_name: "Christian Briones"
+author_email: contact@chrisbriones.com
+author_gravatar: 913bc45e8b375884b908c3db23017031 # Gravatar md5 hash
+twitter_username: cbriones
+github_username: cwbriones
+
+# Site Settings
+baseurl: "" # Base URL must end WITHOUT a slash, default: ""
+permalink: /posts/:slug # Post permalink
+timezone: America/Los_Angeles # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+
+# Site Build
 highlighter: rouge
+markdown: kramdown
 kramdown:
   input: GFM
-  hard_wrap: false
   syntax_highlighter: rouge
-paginate: 10
-permalink: /posts/:year/:month/:day/:title/
+sass:
+  style: :compressed
+safe: true
 
-gems: [jekyll-paginate]
+# Other Params
+include: [ "robots.txt" ]
+exclude: [ "LICENSE", "README.md", "CNAME", "vendor", "Gemfile" ]
+gems:
+  - jekyll-sitemap
+  - jekyll-paginate
 
-author:
-  name: "Christian Briones"
-  github: cwbriones
+compress_html:
+  clippings: all
+  ignore:
+      envs: [ "test" ]
+
+defaults:
+  -
+    scope:
+      path:         ""
+    values:
+      layout:       "null"
+  -
+    scope:
+      type:         "pages"
+    values:
+      layout:       "page"
+  -
+    scope:
+      type:         "posts"
+    values:
+      layout:       "post"

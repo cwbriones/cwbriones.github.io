@@ -5,7 +5,7 @@ title: Up and Running with Jekyll
 published: true
 ---
 
-Here's that famous quote from hipster ipsum:
+Here's that famous quote from hipster ipsum:[^1]
 
 >Actually deep v letterpress, High Life semiotics viral umami Godard YOLO +1
 >chillwave retro banjo sartorial farm-to-table. Mumblecore pug selvage Banksy +1
@@ -23,6 +23,8 @@ And now for some code:
 extern crate rand;
 
 use rand::{thread_rng, Rng};
+
+///  The entire contents of this comment happen to be exactly eighty lines long.
 
 fn partition<T: Num>(items: &mut [T], lo: usize, hi: usize) {
     // Choose the pivot
@@ -50,20 +52,23 @@ fn partition<T: Num>(items: &mut [T], lo: usize, hi: usize) {
 }
 {% endhighlight %}
 
+# Other Markdown
+
 I also could have put a small piece here like this: `$ echo Hello World!`.
 
-As well as lists...
+As well as lists...[^2]
 
 * One
 * and a two
 * and a three
 
-and style some text!
+And we can style some text! *This is emphasized.* **This is bold.** ~~This was redacted.~~
 
-*this is emphasized*
-
-**this is bold**
-
-~~this was redacted.~~
+| A | messy | table|
+|--:|:-----:|:-----|
+|still|looks|nice|
 
 Finally I'll link to my [home page](/) for you.
+
+[^1]: With some fancy footnote!
+[^2]: These are just unordered lists, you can also have ordered ones.

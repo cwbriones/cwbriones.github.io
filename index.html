@@ -3,13 +3,14 @@ layout: default
 ---
 
 <section>
+	<h1 id="site-title">{{ site.title }}</h1>
 	<ul>
 
 		{% for post in site.posts %}
 
 		<li>
 			<div class="post-date">
-				<span>{{ post.date | date: "%b %d, %Y" }}</span>
+				<span>{{ post.date | date: "%d %b %Y" }}</span>
 			</div>
 			<div class="title">
 				<a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>

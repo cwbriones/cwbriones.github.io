@@ -9,12 +9,12 @@
   <link href="{{ site.baseurl | append: /feed.xml }}" rel="self"/>
   <rights>Copyright @
     {{ site.time | date: '%Y' }},
-    {{ site.author_name | xml_escape }}</rights>
+    {{ site.author.name | xml_escape }}</rights>
   <icon>{{ site.baseurl }}/assets/favicon.png</icon>
 
   <author>
-    <name>{{ site.author_name | xml_escape }}</name>
-    <email>{{ site.author_email | xml_escape }}</email>
+    <name>{{ site.author.name | xml_escape }}</name>
+    <email>{{ site.author.email | xml_escape }}</email>
     <uri>https://twitter.com/{{ site.twitter_username }}</uri>
   </author>
 

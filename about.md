@@ -6,7 +6,6 @@ title: about.
 {% include image.html
    url="assets/images/climbing-about.jpg"
    class="about-image"
-   caption="Doing awesome things"
    alt="climbing in yosemite"%}
 
 Hey.

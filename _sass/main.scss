@@ -17,6 +17,12 @@ h5 {
 }
 img {
   max-width: 100%;
+  border-radius: 5px;
+}
+.image-caption {
+  font-size: 0.8em;
+  margin-top: 0px;
+  text-align: center;
 }
 a {
   color: inherit;
@@ -220,11 +226,10 @@ pre {
   display: block;
   margin-top: 0;
   margin-bottom: 1rem;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   line-height: 1.4;
   white-space: pre;
   overflow-x: auto;
-  border: 1px solid #ddd;
   padding: 1rem;
   code {
     font-size: 100%;
@@ -253,7 +258,7 @@ iframe {
   width: 100%;
 }
 article {
-  max-width: 600px;
+  max-width: 45em;
   margin: 0 auto;
   .title {
     line-height: 1.4em;
@@ -332,6 +337,9 @@ section {
         border: 0;
         color: #000;
         box-sizing: border-box;
+        &:hover {
+          color: #1880db;
+        }
       }
       .post-date {
         float: right;

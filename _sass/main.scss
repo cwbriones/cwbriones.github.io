@@ -1,3 +1,5 @@
+$accent: #268bd2;
+
 body {
   font-family: 'Fira Sans', sans-serif;
   padding: 20px;
@@ -139,7 +141,7 @@ span[data-note] {
     box-sizing: border-box;
     &:hover,
     &:focus {
-      background: #1880db;
+      background: $accent;
     }
     &:hover + .logo-prompt,
     &:focus + .logo-prompt {
@@ -338,7 +340,7 @@ section {
         color: #000;
         box-sizing: border-box;
         &:hover {
-          color: #1880db;
+          color: $accent;
         }
       }
       .post-date {

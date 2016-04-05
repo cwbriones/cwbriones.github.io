@@ -19,6 +19,15 @@ Here's that famous quote from hipster ipsum:[^1]
 
 And now for some code:
 
+{% highlight elixir %}
+defmodule Example do
+  def run_command("frobnicate", post) do
+    size = String.length(post)
+    String.duplicate(post, size)
+  end
+end
+{% endhighlight %}
+
 {% highlight rust %}
 extern crate rand;
 

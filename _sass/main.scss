@@ -385,3 +385,12 @@ section {
     -webkit-transform: none;
   }
 }
+.blog-footer {
+  font-size: 0.8rem;
+  text-align: center;
+  color: #555;
+  a {
+    color: #555;
+    border-bottom: 1px solid #555;
+  }
+}

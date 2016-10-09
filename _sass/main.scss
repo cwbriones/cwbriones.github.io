@@ -20,10 +20,16 @@ h5 {
 img {
   max-width: 100%;
   border-radius: 5px;
+  display: block;
+  margin: 0 auto;
+}
+img.center {
+  display: block;
+  margin: 0 auto;
 }
 .image-caption {
   font-size: 0.8em;
-  margin-top: 0px;
+  margin-top: 10px;
   text-align: center;
 }
 a {
@@ -261,7 +267,7 @@ iframe {
   width: 100%;
 }
 article {
-  max-width: 45em;
+  max-width: 40em;
   margin: 0 auto;
   .title {
     line-height: 1.4em;

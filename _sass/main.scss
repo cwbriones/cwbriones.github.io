@@ -2,9 +2,10 @@ $accent: #268bd2;
 
 body {
   font-family: 'Fira Sans', sans-serif;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.8);
   padding: 20px;
   margin: 0;
-  font-weight: 400;
   -webkit-font-smoothing: antialiased;
   -webkit-text-size-adjust: 100%;
   @media (min-width: 992px) {

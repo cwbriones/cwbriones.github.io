@@ -20,13 +20,13 @@ namespace :post do
     puts "Creating post \"#{title}\""
 
     content = <<-EOS.gsub(/^+/,'')
-    ---
-    layout: post
-    date: #{date.strftime('%Y-%m-%d %H:%M:%S')}
-    title: #{title}
-    published: false
-    ---
-    EOS
+---
+layout: post
+date: #{date.strftime('%Y-%m-%d %H:%M:%S')}
+title: #{title}
+published: false
+---
+EOS
 
     MAX_DISPLAYED_TITLE = 6
     datef = date.strftime('%Y-%m-%d')

@@ -1,7 +1,9 @@
 $accent: #268bd2;
+$heading-font: 'Merriweather', serif;
+$content-font: 'Droid Sans', 'Helvetica Neue', Helvetica, sans-serif;
 
 body {
-  font-family: 'Fira Sans', sans-serif;
+  font-family: $content-font;
   font-weight: 400;
   color: rgba(0, 0, 0, 0.8);
   padding: 20px;
@@ -12,10 +14,16 @@ body {
     padding: 35px 50px;
   }
 }
+
+h1 {
+  font-family: $heading-font;
+}
+
 h2,
 h3,
 h4,
 h5 {
+  font-family: $heading-font;
   margin: 45px 0 25px;
 }
 img {
@@ -34,9 +42,11 @@ img.center {
   text-align: center;
 }
 a {
-  color: inherit;
+  color: $accent;
   text-decoration: none;
-  border-bottom: 1px solid #555;
+  &:hover {
+    border-bottom: 1px solid $accent;
+  }
   &.image {
     display: block;
     text-align: center;
@@ -300,14 +310,15 @@ article {
 .back {
   text-align: center;
   a {
+    color: inherit;
     text-decoration: none;
     margin: 40px auto 0;
     display: inline-block;
     padding: 10px;
     border: 0;
-    &:before {
-      content: "<<";
-      margin-right: 5px;
+    &:after {
+      content: "↩";
+      margin-left: 5px;
       color: #000;
     }
   }
@@ -333,9 +344,9 @@ section {
         word-wrap: normal !important;
       }
       a {
+        color: inherit;
         text-decoration: none;
         border: 0;
-        color: #000;
         box-sizing: border-box;
         &:hover {
           color: $accent;

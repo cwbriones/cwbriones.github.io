@@ -8,10 +8,10 @@ title: about.
    class="about-image"
    alt="climbing in yosemite"%}
 
-Hey.
+Welcome!
 
-I'm Christian Briones, currently a Software Engineer at <a href="http://snap.com">Snap, Inc</a>.
+I'm Christian Briones – an avid climber, homebrewer, and [rustacean](http://rust-lang.org).
 
-I'm an avid climber, homebrewer, and [rustacean](http://rust-lang.org). I like to build things, so let's build things together.
+I build things at [Snap, Inc.](http://snap.com)
 
 You can find me on [Github](https://github.com/cwbriones), [Twitter](https://twitter.com/cbriones), and [Keybase](https://keybase.io/chrisbriones).

@@ -201,10 +201,10 @@ yield([]) -> halt.
 
 In this way, we can think of lists as their own type of stream. This is why we wanted the level of indirection with yield. It acts as a simple interface - by adding additional function heads we can easily extend the notion of a stream to any iterable structure. This is very powerful, it lets us mix-and-match these structures whenever we want. [^2]
 
-[^1]: Those of you more familiar with the erlang ecosystem will know that I shamelessly took this from the excellent [Stream](http://elixir-lang.org/docs/stable/elixir/Stream.html) module found in Elixir.
-
-[^2]: This idea is used to great effect in Elixir with its [Enumerable](http://elixir-lang.org/docs/stable/elixir/Enumerable.html) protocol, and its notion of protocols in general.
-
 ## Until next time
 
 We've seen that while infinite streams are certainly a niceity to have as a first-class feature, they are easily expressible through the power of simple functions. There are more complex examples of stream transformers and combinators available, but I'll leave those for another time. If you're curious or want to play around with them right now, all of the above (and more!) is available [on my GitHub](https://github.com/cwbriones/streams). Thanks for reading!
+
+[^1]: Those of you more familiar with the erlang ecosystem will know that I shamelessly took this from the excellent [Stream](http://elixir-lang.org/docs/stable/elixir/Stream.html) module found in Elixir.
+
+[^2]: This idea is used to great effect in Elixir with its [Enumerable](http://elixir-lang.org/docs/stable/elixir/Enumerable.html) protocol, and its notion of protocols in general.

@@ -1,6 +1,0 @@
-{% assign minutes = page.content | number_of_words | divided_by: 200 %}
-{% if minutes == 0 %}{% assign minutes = 1 %}{% endif %}
-<span class="article-datetime">
-<time>{{ page.date | date: '%-d %B %Y' }}</time>
-• {{ minutes }} min read
-</span>

@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  <meta charset="utf-8">
+  <title>Getting Lazy with Erlang</title>
+  <meta name="description" content="Getting Lazy with Erlang">
+  <meta name="author" content="Christian Briones">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <noscript>
+    <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:400,600" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="http://briones.io/css/fonts.css">
+  </noscript>
+  
+  
+  <style type="text/css" media="screen">
+    /*!
+Pure v1.0.0
+Copyright 2013 Yahoo!
+Licensed under the BSD License.
+https://github.com/yahoo/pure/blob/master/LICENSE.md
+*/
+/*!
+normalize.css v^3.0 | MIT License | git.io/normalize
+Copyright (c) Nicolas Gallagher and Jonathan Neal
+*/
+/*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */img,legend{border:0}legend,td,th{padding:0}html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section,summary{display:block}audio,canvas,progress,video{display:inline-block;vertical-align:baseline}audio:not([controls]){display:none;height:0}[hidden],template{display:none}a{background-color:transparent}a:active,a:hover{outline:0}abbr[title]{border-bottom:1px dotted}b,optgroup,strong{font-weight:700}dfn{font-style:italic}h1{font-size:2em;margin:.67em 0}mark{background:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-.5em}sub{bottom:-.25em}svg:not(:root){overflow:hidden}figure{margin:1em 40px}hr{box-sizing:content-box;height:0}pre,textarea{overflow:auto}code,kbd,pre,samp{font-family:monospace,monospace;font-size:1em}button,input,optgroup,select,textarea{color:inherit;font:inherit;margin:0}button{overflow:visible}button,select{text-transform:none}button,html input[type=button],input[type=reset],input[type=submit]{-webkit-appearance:button;cursor:pointer}button[disabled],html input[disabled]{cursor:default}button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}input{line-height:normal}input[type=checkbox],input[type=radio]{box-sizing:border-box;padding:0}input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-spin-button{height:auto}input[type=search]{-webkit-appearance:textfield;box-sizing:content-box}input[type=search]::-webkit-search-cancel-button,input[type=search]::-webkit-search-decoration{-webkit-appearance:none}fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}table{border-collapse:collapse;border-spacing:0}.hidden,[hidden]{display:none!important}.pure-img{max-width:100%;height:auto;display:block}
+  </style>
+  <style type="text/css" media="screen">
+    /*!
+Pure v1.0.0
+Copyright 2013 Yahoo!
+Licensed under the BSD License.
+https://github.com/yahoo/pure/blob/master/LICENSE.md
+*/
+.pure-menu{box-sizing:border-box}.pure-menu-fixed{position:fixed;left:0;top:0;z-index:3}.pure-menu-item,.pure-menu-list{position:relative}.pure-menu-list{list-style:none;margin:0;padding:0}.pure-menu-item{padding:0;margin:0;height:100%}.pure-menu-heading,.pure-menu-link{display:block;text-decoration:none;white-space:nowrap}.pure-menu-horizontal{width:100%;white-space:normal}.pure-menu-horizontal .pure-menu-list{display:inline-block}.pure-menu-horizontal .pure-menu-heading,.pure-menu-horizontal .pure-menu-item,.pure-menu-horizontal .pure-menu-separator{display:inline-block;zoom:1;vertical-align:middle}.pure-menu-item .pure-menu-item{display:block}.pure-menu-children{display:none;position:absolute;left:100%;top:0;margin:0;padding:0;z-index:3}.pure-menu-horizontal .pure-menu-children{left:0;top:auto;width:inherit}.pure-menu-active>.pure-menu-children,.pure-menu-allow-hover:hover>.pure-menu-children{display:block;position:absolute}.pure-menu-has-children>.pure-menu-link:after{padding-left:.5em;content:"\25B8";font-size:small}.pure-menu-horizontal .pure-menu-has-children>.pure-menu-link:after{content:"\25BE"}.pure-menu-scrollable{overflow-y:scroll;overflow-x:hidden}.pure-menu-scrollable .pure-menu-list{display:block}.pure-menu-horizontal.pure-menu-scrollable .pure-menu-list{display:inline-block}.pure-menu-horizontal.pure-menu-scrollable{white-space:nowrap;overflow-y:hidden;overflow-x:auto;-ms-overflow-style:none;-webkit-overflow-scrolling:touch;padding:.5em 0}.pure-menu-horizontal.pure-menu-scrollable::-webkit-scrollbar{display:none}.pure-menu-horizontal .pure-menu-children .pure-menu-separator,.pure-menu-separator{background-color:#ccc;height:1px;margin:.3em 0}.pure-menu-horizontal .pure-menu-separator{width:1px;height:1.3em;margin:0 .3em}.pure-menu-horizontal .pure-menu-children .pure-menu-separator{display:block;width:auto}.pure-menu-heading{text-transform:uppercase;color:#565d64}.pure-menu-link{color:#777}.pure-menu-children{background-color:#fff}.pure-menu-disabled,.pure-menu-heading,.pure-menu-link{padding:.5em 1em}.pure-menu-disabled{opacity:.5}.pure-menu-disabled .pure-menu-link:hover{background-color:transparent}.pure-menu-active>.pure-menu-link,.pure-menu-link:focus,.pure-menu-link:hover{background-color:#eee}.pure-menu-selected .pure-menu-link,.pure-menu-selected .pure-menu-link:visited{color:#000}
+
+  </style>
+  <style type="text/css" media="screen">
+    /*!
+Pure v1.0.0
+Copyright 2013 Yahoo!
+Licensed under the BSD License.
+https://github.com/yahoo/pure/blob/master/LICENSE.md
+*/
+.pure-g{letter-spacing:-.31em;text-rendering:optimizespeed;font-family:FreeSans,Arimo,"Droid Sans",Helvetica,Arial,sans-serif;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-flow:row wrap;-ms-flex-flow:row wrap;flex-flow:row wrap;-webkit-align-content:flex-start;-ms-flex-line-pack:start;align-content:flex-start}@media all and (-ms-high-contrast:none),(-ms-high-contrast:active){table .pure-g{display:block}}.opera-only :-o-prefocus,.pure-g{word-spacing:-.43em}.pure-u,.pure-u-1,.pure-u-1-1,.pure-u-1-12,.pure-u-1-2,.pure-u-1-24,.pure-u-1-3,.pure-u-1-4,.pure-u-1-5,.pure-u-1-6,.pure-u-1-8,.pure-u-10-24,.pure-u-11-12,.pure-u-11-24,.pure-u-12-24,.pure-u-13-24,.pure-u-14-24,.pure-u-15-24,.pure-u-16-24,.pure-u-17-24,.pure-u-18-24,.pure-u-19-24,.pure-u-2-24,.pure-u-2-3,.pure-u-2-5,.pure-u-20-24,.pure-u-21-24,.pure-u-22-24,.pure-u-23-24,.pure-u-24-24,.pure-u-3-24,.pure-u-3-4,.pure-u-3-5,.pure-u-3-8,.pure-u-4-24,.pure-u-4-5,.pure-u-5-12,.pure-u-5-24,.pure-u-5-5,.pure-u-5-6,.pure-u-5-8,.pure-u-6-24,.pure-u-7-12,.pure-u-7-24,.pure-u-7-8,.pure-u-8-24,.pure-u-9-24{display:inline-block;zoom:1;letter-spacing:normal;word-spacing:normal;vertical-align:top;text-rendering:auto}.pure-g [class*=pure-u]{font-family:sans-serif}.pure-u-1-24{width:4.1667%}.pure-u-1-12,.pure-u-2-24{width:8.3333%}.pure-u-1-8,.pure-u-3-24{width:12.5%}.pure-u-1-6,.pure-u-4-24{width:16.6667%}.pure-u-1-5{width:20%}.pure-u-5-24{width:20.8333%}.pure-u-1-4,.pure-u-6-24{width:25%}.pure-u-7-24{width:29.1667%}.pure-u-1-3,.pure-u-8-24{width:33.3333%}.pure-u-3-8,.pure-u-9-24{width:37.5%}.pure-u-2-5{width:40%}.pure-u-10-24,.pure-u-5-12{width:41.6667%}.pure-u-11-24{width:45.8333%}.pure-u-1-2,.pure-u-12-24{width:50%}.pure-u-13-24{width:54.1667%}.pure-u-14-24,.pure-u-7-12{width:58.3333%}.pure-u-3-5{width:60%}.pure-u-15-24,.pure-u-5-8{width:62.5%}.pure-u-16-24,.pure-u-2-3{width:66.6667%}.pure-u-17-24{width:70.8333%}.pure-u-18-24,.pure-u-3-4{width:75%}.pure-u-19-24{width:79.1667%}.pure-u-4-5{width:80%}.pure-u-20-24,.pure-u-5-6{width:83.3333%}.pure-u-21-24,.pure-u-7-8{width:87.5%}.pure-u-11-12,.pure-u-22-24{width:91.6667%}.pure-u-23-24{width:95.8333%}.pure-u-1,.pure-u-1-1,.pure-u-24-24,.pure-u-5-5{width:100%}
+  </style>
+  
+  
+  <style type="text/css" media="screen">
+    /*!
+Pure v1.0.0
+Copyright 2013 Yahoo!
+Licensed under the BSD License.
+https://github.com/yahoo/pure/blob/master/LICENSE.md
+*/
+@media screen and (min-width:35.5em){.pure-u-sm-1,.pure-u-sm-1-1,.pure-u-sm-1-12,.pure-u-sm-1-2,.pure-u-sm-1-24,.pure-u-sm-1-3,.pure-u-sm-1-4,.pure-u-sm-1-5,.pure-u-sm-1-6,.pure-u-sm-1-8,.pure-u-sm-10-24,.pure-u-sm-11-12,.pure-u-sm-11-24,.pure-u-sm-12-24,.pure-u-sm-13-24,.pure-u-sm-14-24,.pure-u-sm-15-24,.pure-u-sm-16-24,.pure-u-sm-17-24,.pure-u-sm-18-24,.pure-u-sm-19-24,.pure-u-sm-2-24,.pure-u-sm-2-3,.pure-u-sm-2-5,.pure-u-sm-20-24,.pure-u-sm-21-24,.pure-u-sm-22-24,.pure-u-sm-23-24,.pure-u-sm-24-24,.pure-u-sm-3-24,.pure-u-sm-3-4,.pure-u-sm-3-5,.pure-u-sm-3-8,.pure-u-sm-4-24,.pure-u-sm-4-5,.pure-u-sm-5-12,.pure-u-sm-5-24,.pure-u-sm-5-5,.pure-u-sm-5-6,.pure-u-sm-5-8,.pure-u-sm-6-24,.pure-u-sm-7-12,.pure-u-sm-7-24,.pure-u-sm-7-8,.pure-u-sm-8-24,.pure-u-sm-9-24{display:inline-block;zoom:1;letter-spacing:normal;word-spacing:normal;vertical-align:top;text-rendering:auto}.pure-u-sm-1-24{width:4.1667%}.pure-u-sm-1-12,.pure-u-sm-2-24{width:8.3333%}.pure-u-sm-1-8,.pure-u-sm-3-24{width:12.5%}.pure-u-sm-1-6,.pure-u-sm-4-24{width:16.6667%}.pure-u-sm-1-5{width:20%}.pure-u-sm-5-24{width:20.8333%}.pure-u-sm-1-4,.pure-u-sm-6-24{width:25%}.pure-u-sm-7-24{width:29.1667%}.pure-u-sm-1-3,.pure-u-sm-8-24{width:33.3333%}.pure-u-sm-3-8,.pure-u-sm-9-24{width:37.5%}.pure-u-sm-2-5{width:40%}.pure-u-sm-10-24,.pure-u-sm-5-12{width:41.6667%}.pure-u-sm-11-24{width:45.8333%}.pure-u-sm-1-2,.pure-u-sm-12-24{width:50%}.pure-u-sm-13-24{width:54.1667%}.pure-u-sm-14-24,.pure-u-sm-7-12{width:58.3333%}.pure-u-sm-3-5{width:60%}.pure-u-sm-15-24,.pure-u-sm-5-8{width:62.5%}.pure-u-sm-16-24,.pure-u-sm-2-3{width:66.6667%}.pure-u-sm-17-24{width:70.8333%}.pure-u-sm-18-24,.pure-u-sm-3-4{width:75%}.pure-u-sm-19-24{width:79.1667%}.pure-u-sm-4-5{width:80%}.pure-u-sm-20-24,.pure-u-sm-5-6{width:83.3333%}.pure-u-sm-21-24,.pure-u-sm-7-8{width:87.5%}.pure-u-sm-11-12,.pure-u-sm-22-24{width:91.6667%}.pure-u-sm-23-24{width:95.8333%}.pure-u-sm-1,.pure-u-sm-1-1,.pure-u-sm-24-24,.pure-u-sm-5-5{width:100%}}@media screen and (min-width:48em){.pure-u-md-1,.pure-u-md-1-1,.pure-u-md-1-12,.pure-u-md-1-2,.pure-u-md-1-24,.pure-u-md-1-3,.pure-u-md-1-4,.pure-u-md-1-5,.pure-u-md-1-6,.pure-u-md-1-8,.pure-u-md-10-24,.pure-u-md-11-12,.pure-u-md-11-24,.pure-u-md-12-24,.pure-u-md-13-24,.pure-u-md-14-24,.pure-u-md-15-24,.pure-u-md-16-24,.pure-u-md-17-24,.pure-u-md-18-24,.pure-u-md-19-24,.pure-u-md-2-24,.pure-u-md-2-3,.pure-u-md-2-5,.pure-u-md-20-24,.pure-u-md-21-24,.pure-u-md-22-24,.pure-u-md-23-24,.pure-u-md-24-24,.pure-u-md-3-24,.pure-u-md-3-4,.pure-u-md-3-5,.pure-u-md-3-8,.pure-u-md-4-24,.pure-u-md-4-5,.pure-u-md-5-12,.pure-u-md-5-24,.pure-u-md-5-5,.pure-u-md-5-6,.pure-u-md-5-8,.pure-u-md-6-24,.pure-u-md-7-12,.pure-u-md-7-24,.pure-u-md-7-8,.pure-u-md-8-24,.pure-u-md-9-24{display:inline-block;zoom:1;letter-spacing:normal;word-spacing:normal;vertical-align:top;text-rendering:auto}.pure-u-md-1-24{width:4.1667%}.pure-u-md-1-12,.pure-u-md-2-24{width:8.3333%}.pure-u-md-1-8,.pure-u-md-3-24{width:12.5%}.pure-u-md-1-6,.pure-u-md-4-24{width:16.6667%}.pure-u-md-1-5{width:20%}.pure-u-md-5-24{width:20.8333%}.pure-u-md-1-4,.pure-u-md-6-24{width:25%}.pure-u-md-7-24{width:29.1667%}.pure-u-md-1-3,.pure-u-md-8-24{width:33.3333%}.pure-u-md-3-8,.pure-u-md-9-24{width:37.5%}.pure-u-md-2-5{width:40%}.pure-u-md-10-24,.pure-u-md-5-12{width:41.6667%}.pure-u-md-11-24{width:45.8333%}.pure-u-md-1-2,.pure-u-md-12-24{width:50%}.pure-u-md-13-24{width:54.1667%}.pure-u-md-14-24,.pure-u-md-7-12{width:58.3333%}.pure-u-md-3-5{width:60%}.pure-u-md-15-24,.pure-u-md-5-8{width:62.5%}.pure-u-md-16-24,.pure-u-md-2-3{width:66.6667%}.pure-u-md-17-24{width:70.8333%}.pure-u-md-18-24,.pure-u-md-3-4{width:75%}.pure-u-md-19-24{width:79.1667%}.pure-u-md-4-5{width:80%}.pure-u-md-20-24,.pure-u-md-5-6{width:83.3333%}.pure-u-md-21-24,.pure-u-md-7-8{width:87.5%}.pure-u-md-11-12,.pure-u-md-22-24{width:91.6667%}.pure-u-md-23-24{width:95.8333%}.pure-u-md-1,.pure-u-md-1-1,.pure-u-md-24-24,.pure-u-md-5-5{width:100%}}@media screen and (min-width:64em){.pure-u-lg-1,.pure-u-lg-1-1,.pure-u-lg-1-12,.pure-u-lg-1-2,.pure-u-lg-1-24,.pure-u-lg-1-3,.pure-u-lg-1-4,.pure-u-lg-1-5,.pure-u-lg-1-6,.pure-u-lg-1-8,.pure-u-lg-10-24,.pure-u-lg-11-12,.pure-u-lg-11-24,.pure-u-lg-12-24,.pure-u-lg-13-24,.pure-u-lg-14-24,.pure-u-lg-15-24,.pure-u-lg-16-24,.pure-u-lg-17-24,.pure-u-lg-18-24,.pure-u-lg-19-24,.pure-u-lg-2-24,.pure-u-lg-2-3,.pure-u-lg-2-5,.pure-u-lg-20-24,.pure-u-lg-21-24,.pure-u-lg-22-24,.pure-u-lg-23-24,.pure-u-lg-24-24,.pure-u-lg-3-24,.pure-u-lg-3-4,.pure-u-lg-3-5,.pure-u-lg-3-8,.pure-u-lg-4-24,.pure-u-lg-4-5,.pure-u-lg-5-12,.pure-u-lg-5-24,.pure-u-lg-5-5,.pure-u-lg-5-6,.pure-u-lg-5-8,.pure-u-lg-6-24,.pure-u-lg-7-12,.pure-u-lg-7-24,.pure-u-lg-7-8,.pure-u-lg-8-24,.pure-u-lg-9-24{display:inline-block;zoom:1;letter-spacing:normal;word-spacing:normal;vertical-align:top;text-rendering:auto}.pure-u-lg-1-24{width:4.1667%}.pure-u-lg-1-12,.pure-u-lg-2-24{width:8.3333%}.pure-u-lg-1-8,.pure-u-lg-3-24{width:12.5%}.pure-u-lg-1-6,.pure-u-lg-4-24{width:16.6667%}.pure-u-lg-1-5{width:20%}.pure-u-lg-5-24{width:20.8333%}.pure-u-lg-1-4,.pure-u-lg-6-24{width:25%}.pure-u-lg-7-24{width:29.1667%}.pure-u-lg-1-3,.pure-u-lg-8-24{width:33.3333%}.pure-u-lg-3-8,.pure-u-lg-9-24{width:37.5%}.pure-u-lg-2-5{width:40%}.pure-u-lg-10-24,.pure-u-lg-5-12{width:41.6667%}.pure-u-lg-11-24{width:45.8333%}.pure-u-lg-1-2,.pure-u-lg-12-24{width:50%}.pure-u-lg-13-24{width:54.1667%}.pure-u-lg-14-24,.pure-u-lg-7-12{width:58.3333%}.pure-u-lg-3-5{width:60%}.pure-u-lg-15-24,.pure-u-lg-5-8{width:62.5%}.pure-u-lg-16-24,.pure-u-lg-2-3{width:66.6667%}.pure-u-lg-17-24{width:70.8333%}.pure-u-lg-18-24,.pure-u-lg-3-4{width:75%}.pure-u-lg-19-24{width:79.1667%}.pure-u-lg-4-5{width:80%}.pure-u-lg-20-24,.pure-u-lg-5-6{width:83.3333%}.pure-u-lg-21-24,.pure-u-lg-7-8{width:87.5%}.pure-u-lg-11-12,.pure-u-lg-22-24{width:91.6667%}.pure-u-lg-23-24{width:95.8333%}.pure-u-lg-1,.pure-u-lg-1-1,.pure-u-lg-24-24,.pure-u-lg-5-5{width:100%}}@media screen and (min-width:80em){.pure-u-xl-1,.pure-u-xl-1-1,.pure-u-xl-1-12,.pure-u-xl-1-2,.pure-u-xl-1-24,.pure-u-xl-1-3,.pure-u-xl-1-4,.pure-u-xl-1-5,.pure-u-xl-1-6,.pure-u-xl-1-8,.pure-u-xl-10-24,.pure-u-xl-11-12,.pure-u-xl-11-24,.pure-u-xl-12-24,.pure-u-xl-13-24,.pure-u-xl-14-24,.pure-u-xl-15-24,.pure-u-xl-16-24,.pure-u-xl-17-24,.pure-u-xl-18-24,.pure-u-xl-19-24,.pure-u-xl-2-24,.pure-u-xl-2-3,.pure-u-xl-2-5,.pure-u-xl-20-24,.pure-u-xl-21-24,.pure-u-xl-22-24,.pure-u-xl-23-24,.pure-u-xl-24-24,.pure-u-xl-3-24,.pure-u-xl-3-4,.pure-u-xl-3-5,.pure-u-xl-3-8,.pure-u-xl-4-24,.pure-u-xl-4-5,.pure-u-xl-5-12,.pure-u-xl-5-24,.pure-u-xl-5-5,.pure-u-xl-5-6,.pure-u-xl-5-8,.pure-u-xl-6-24,.pure-u-xl-7-12,.pure-u-xl-7-24,.pure-u-xl-7-8,.pure-u-xl-8-24,.pure-u-xl-9-24{display:inline-block;zoom:1;letter-spacing:normal;word-spacing:normal;vertical-align:top;text-rendering:auto}.pure-u-xl-1-24{width:4.1667%}.pure-u-xl-1-12,.pure-u-xl-2-24{width:8.3333%}.pure-u-xl-1-8,.pure-u-xl-3-24{width:12.5%}.pure-u-xl-1-6,.pure-u-xl-4-24{width:16.6667%}.pure-u-xl-1-5{width:20%}.pure-u-xl-5-24{width:20.8333%}.pure-u-xl-1-4,.pure-u-xl-6-24{width:25%}.pure-u-xl-7-24{width:29.1667%}.pure-u-xl-1-3,.pure-u-xl-8-24{width:33.3333%}.pure-u-xl-3-8,.pure-u-xl-9-24{width:37.5%}.pure-u-xl-2-5{width:40%}.pure-u-xl-10-24,.pure-u-xl-5-12{width:41.6667%}.pure-u-xl-11-24{width:45.8333%}.pure-u-xl-1-2,.pure-u-xl-12-24{width:50%}.pure-u-xl-13-24{width:54.1667%}.pure-u-xl-14-24,.pure-u-xl-7-12{width:58.3333%}.pure-u-xl-3-5{width:60%}.pure-u-xl-15-24,.pure-u-xl-5-8{width:62.5%}.pure-u-xl-16-24,.pure-u-xl-2-3{width:66.6667%}.pure-u-xl-17-24{width:70.8333%}.pure-u-xl-18-24,.pure-u-xl-3-4{width:75%}.pure-u-xl-19-24{width:79.1667%}.pure-u-xl-4-5{width:80%}.pure-u-xl-20-24,.pure-u-xl-5-6{width:83.3333%}.pure-u-xl-21-24,.pure-u-xl-7-8{width:87.5%}.pure-u-xl-11-12,.pure-u-xl-22-24{width:91.6667%}.pure-u-xl-23-24{width:95.8333%}.pure-u-xl-1,.pure-u-xl-1-1,.pure-u-xl-24-24,.pure-u-xl-5-5{width:100%}}
+  </style>
+  
+
+  
+  <style type="text/css" media="screen">
+    html {
+	min-height: 100%;
+	width: 100%;
+	position: relative;
+}
+
+body {
+	background-color: rgb(252, 252, 252);
+	color: #484848;
+}
+
+a {
+	text-decoration: none;
+}
+
+.nav-menu {
+	margin-top: 5px;
+	padding-bottom: 5px;
+	border-bottom: 1px solid #e3e3e3;
+}
+
+.pure-menu-heading {
+	text-transform: none;
+	font-size: large;
+}
+
+.header {
+	text-align: left;
+	color: #484848;
+	margin-bottom: .5em;
+}
+
+.header ul li {
+	height: auto;
+}
+
+.header ul li a {
+	font-weight: bold;
+	color: #484848;
+	font-family: "Source Sans Pro", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.header {
+	font-weight: bold;
+	color: #484848;
+	font-family: "Source Sans Pro", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.site-title {
+	color: #484848;
+	text-transform: none;
+	font-weight: normal;
+	font-family: "Source Sans Pro", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.pull-right {
+	float: right;
+}
+
+.posts-name {
+	text-transform: capitalize;
+	font-weight: bold;
+	padding-left: 1em;
+	margin-top: 1em;
+	font-family: "Source Sans Pro", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.posts {
+	font-family: verdana, arial, helvetica, sans-serif;
+	list-style-type: none;
+	padding-left: 1em;
+}
+
+.posts li p {
+	margin-top: 0;
+}
+
+.posts li {
+	margin-bottom: 1em;
+}
+
+.posts li > a {
+	color: #369;
+	text-decoration: none;
+}
+
+.post-list {
+	font-size: large;
+}
+
+.footnote {
+	font-family: verdana, arial, helvetica, sans-serif;
+	color: #575757;
+	font-size: 0.75em;
+	margin-bottom: 0;
+}
+
+.footnote a {
+	color: #575757;
+}
+
+.footnote a:hover {
+	text-decoration: underline;
+	color: #369;
+}
+
+.footer {
+	position: absolute;
+	z-index: 2;
+	height: auto;
+	width: 100%;
+	bottom: 0;
+}
+
+.footer-content {
+	border-top: 1px solid #e3e3e3;
+	font-size: 80%;
+	color: #bbb;
+}
+
+.footer-content a {
+	color: #575757;
+}
+
+.footer-content ul {
+	height: auto;
+	margin-top: 0;
+	margin-bottom: 0;
+	display: inline-block;
+	padding-left: 0;
+}
+
+#gototop-btn {
+	display: inline-block;
+}
+
+#foot-name {
+	color: #484848;
+	text-transform: none;
+}
+
+#foot-copyright {
+	padding-left: 1em;
+	padding-bottom: 0.5em;
+	margin: 0;
+}
+
+.post {
+	font-family: proxima-nova, "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+	color: #484848;
+	letter-spacing: normal;
+	padding-left: .5em;
+}
+
+.post h1, h2, h3, h4, h5, h6 {
+	font-weight: bold;
+	letter-spacing: normal;
+}
+
+.post-content {
+	z-index: 9;
+	overflow: auto;
+	padding: 0;
+	padding-bottom: 3em;
+	font-size: 16px;
+	line-height: 1.4;
+}
+
+.post-content img {
+	max-width: 100%;
+	height: auto;
+}
+
+.post-content pre {
+	padding: 0.5em;
+}
+
+.post a {
+	color: #c05b4d;
+	text-decoration: none;
+}
+
+.post a:hover {
+	color: #a5473a;
+	text-decoration: underline;
+}
+
+.post h1 {
+	font-size: 28px;
+}
+
+.post h2 {
+	font-size: 25px;
+}
+
+.post h3 {
+	font-size: 23px;
+}
+
+.post h4 {
+	font-size: 21px;
+}
+
+.post h5 {
+	font-size: 19px;
+}
+
+.post h6 {
+	font-size: 18px;
+}
+
+.post-title {
+	margin-top: 0;
+	margin-bottom: 2em;
+}
+
+.post-title h1 {
+	font-weight: bold;
+	font-size: 39px;
+	line-height: 40px;
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+@media screen and (max-width: 767px) {
+	.desktop {
+		display: none;
+	}
+
+	.mobile {
+		display: block;
+	}
+
+	#toggle-btn {
+		display: inline-block;
+		float: right;
+		padding: .5em 1em;
+		text-decoration: none;
+		color: #484848;
+		font-weight: bold;
+	}
+
+	#toggle-content li {
+		clear: both;
+		height: auto;
+		background-color: rgb(249, 249, 249);
+	}
+
+	#toggle-home {
+		display: inline-block;
+	}
+}
+
+@media screen and (min-width: 768px) {
+	.mobile {
+		display: none;
+	}
+
+	.desktop {
+		display: block;
+	}
+}
+
+  </style>
+
+  
+  <link rel="shortcut icon" 
+   
+    href="http://briones.io/img/favicon.ico"
+  
+  type="image/x-icon">
+
+  
+  
+
+  <meta name="generator" content="Hugo 0.54.0" />
+
+  
+  
+</head>
+<body>
+
+<div class="header pure-g">
+    <div class="pure-u-1-24 pure-u-md-5-24"></div>
+    <div class="pure-u-11-12 pure-u-md-7-12">
+        <div class="desktop pure-menu pure-menu-horizontal nav-menu">
+            
+            <a href="http://briones.io/" class="site-title pure-menu-heading">christian&#39;s blog.</a>
+            <ul class="pure-menu-list pull-right">
+				
+                
+				
+                <li class="pure-menu-item">
+                    <a href="http://briones.io/about/" class="pure-menu-link">About</a>
+                </li>
+            </ul>
+        </div>
+        <div class="mobile pure-menu nav-menu">
+            <a href="/" class="site-title pure-menu-heading" id="toggle-home">christian&#39;s blog.</a>
+            <a href="#" id="toggle-btn">&#9776;</a>
+            <ul class="pure-menu-list" id="toggle-content" style="display:none;">
+                
+				
+                
+				
+                <li class="pure-menu-item">
+                    <a href="http://briones.io/about" class="pure-menu-link">About</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="pure-u-1-24 pure-u-md-5-24"></div>
+</div>
+
+
+<div class="pure-g">
+  <div class="pure-u-1-24 pure-u-md-5-24"></div>
+  <div class="pure-u-11-12 pure-u-md-7-12">
+    <div class="post">
+
+      <div class="post-title">
+        <p class="footnote">
+          <time datetime="2016-10-08 21:32:57 &#43;0000 UTC">
+            
+              2016-10-08
+            
+          </time>
+        
+        
+        |
+        
+        
+        tags: [ <a href="http://briones.io/tags/software">software</a> ]
+        
+
+        
+
+        
+        </p>
+        <h1>Getting Lazy with Erlang</h1>
+      </div>
+
+      <div class="post-content">
+        
+
+<p>I&rsquo;ve recently been playing around with Haskell again, and not only am I impressed by how natural recursive structures seem within the language - the ease with which you define them is even more impressive.</p>
+
+<p>For the uninitiated, Haskell has a list data type that is <em>lazily</em> evaluated. That is, elements of the list are only evaluated if they&rsquo;re needed to continue the computation. This allows you to do all sorts of neat things like create an infinite list of integers or build a list that refers to itself.</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#60a0b0;font-style:italic">-- Create an infinite list of integers</span>
+<span style="color:#06287e">integers</span> <span style="color:#007020;font-weight:bold">=</span> [<span style="color:#40a070">1</span><span style="color:#666">..</span>]
+
+<span style="color:#60a0b0;font-style:italic">-- Filter out the odd values</span>
+<span style="color:#06287e">isOdd</span> <span style="color:#007020;font-weight:bold">=</span> (<span style="color:#666">&gt;</span> <span style="color:#40a070">0</span>) <span style="color:#666">.</span> (<span style="color:#06287e">flip</span> <span style="color:#06287e">mod</span> <span style="color:#40a070">2</span>)
+
+<span style="color:#06287e">odds</span> <span style="color:#007020;font-weight:bold">=</span> <span style="color:#06287e">filter</span> <span style="color:#06287e">isOdd</span> <span style="color:#06287e">integers</span>
+
+<span style="color:#60a0b0;font-style:italic">-- Map them to squares</span>
+<span style="color:#06287e">odd_squares</span> <span style="color:#007020;font-weight:bold">=</span> <span style="color:#06287e">map</span> (<span style="color:#666">^</span><span style="color:#40a070">2</span>) <span style="color:#06287e">odds</span>
+
+<span style="color:#60a0b0;font-style:italic">-- Take the first 10 from this list.</span>
+<span style="color:#60a0b0;font-style:italic">-- This is when the list actually gets evaluated.</span>
+<span style="color:#60a0b0;font-style:italic">--</span>
+<span style="color:#60a0b0;font-style:italic">-- firstTen = [1,9,25,49,81,121,169,225,289,361]</span>
+<span style="color:#06287e">firstTen</span> <span style="color:#007020;font-weight:bold">=</span> <span style="color:#06287e">take</span> <span style="color:#40a070">10</span> <span style="color:#06287e">odd_squares</span></code></pre></div>
+<p>In my day-to-day I&rsquo;m programming Erlang, which doesn&rsquo;t have the concept of lazy-evaluation baked right in from the start. In Erlang lists are strictly (or eagerly) evaluated, so the above breaks down pretty much right away.</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-erlang" data-lang="erlang"><span style="color:#60a0b0;font-style:italic">%% Create an infinite list of integers
+</span><span style="color:#60a0b0;font-style:italic">%% integers() -&gt;
+</span><span style="color:#60a0b0;font-style:italic"></span><span style="">%%</span>    <span style="color:#666">???</span></code></pre></div>
+<p>We can&rsquo;t even express the original list of integers with erlang&rsquo;s built-in lists. So how can we
+get something like what we have in Haskell?</p>
+
+<h2 id="funs-as-contexts">Funs as contexts</h2>
+
+<p>If we take a quick look around, it&rsquo;s apparent that functions themselves are lazy by nature - they let you pass around blocks of code as data. Wrapping a value in a lambda only evaluates that value when the lambda is called:</p>
+
+<pre><code>1&gt; io:format(&quot;Hey!\n&quot;).
+Hey!
+ok
+2&gt; F = fun() -&gt; io:format(&quot;Hey!&quot;\n) end.
+#Fun&lt;erl_eval.20.50752066&gt;
+3&gt; F().
+Hey!
+ok
+</code></pre>
+
+<p>We can use this to build our lazy lists in Erlang, we&rsquo;ll call them <strong><em>streams</em></strong>. <sup class="footnote-ref" id="fnref:streams"><a href="#fn:streams">1</a></sup></p>
+
+<p>You can think of streams as specific types of functions. They need to return the next value in the stream, if any, otherwise signal that we&rsquo;ve reached the end. This leads to a particularly elegant type definition:</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-erlang" data-lang="erlang">-<span style="color:#d55537;font-weight:bold">type</span> <span style="color:#06287e">stream</span>(<span style="color:#bb60d5">A</span>) :: <span style="color:#007020;font-weight:bold">fun</span>(() -<span style="">&gt; </span><span style="color:#d55537;font-weight:bold">halt</span> | {<span style="color:#bb60d5">A</span>, <span style="color:#06287e">stream</span>(<span style="color:#bb60d5">A</span>)}.</code></pre></div>
+<p>If the stream returns <code>halt</code>, we know we&rsquo;ve reached the end. Otherwise we get our next value along with a new stream for continuing iteration.</p>
+
+<h2 id="building-our-first-stream">Building our first stream</h2>
+
+<p>First of all, let&rsquo;s wrap up actual function calls to our stream with the function `yield/1&rsquo;.</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-erlang" data-lang="erlang">-<span style="color:#d55537;font-weight:bold">spec</span> <span style="color:#06287e">yield</span>(<span style="color:#bb60d5">Stream</span> :: <span style="color:#06287e">stream</span>(<span style="color:#bb60d5">A</span>)) -<span style="">&gt; </span><span style="color:#d55537;font-weight:bold">halt</span> | {<span style="color:#bb60d5">A</span>, <span style="color:#06287e">stream</span>(<span style="color:#bb60d5">A</span>)}.
+<span style="color:#06287e">yield</span>(<span style="color:#bb60d5">F</span>) <span style="color:#007020;font-weight:bold">when</span> <span style="color:#007020">is_function</span>(<span style="color:#bb60d5">F</span>) -<span style="">&gt; F().</span></code></pre></div>
+<p>This might seem like an unnecessary level of indirection, but its usefulness will become apparent later. Now let&rsquo;s get to work! We&rsquo;ll begin by creating our list of integers.</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-erlang" data-lang="erlang">-<span style="color:#d55537;font-weight:bold">spec</span> <span style="color:#06287e">naturals</span>() -<span style="">&gt; </span><span style="color:#d55537;font-weight:bold">stream</span>(<span style="color:#06287e">integer</span>()).
+<span style="color:#06287e">naturals</span>() -<span style="">&gt; </span><span style="color:#d55537;font-weight:bold">naturals</span>(<span style="color:#40a070">0</span>).
+
+-<span style="color:#d55537;font-weight:bold">spec</span> <span style="color:#06287e">naturals</span>(<span style="color:#06287e">integer</span>()) -<span style="">&gt; </span><span style="color:#d55537;font-weight:bold">stream</span>(<span style="color:#06287e">integer</span>()).
+<span style="color:#06287e">naturals</span>(<span style="color:#bb60d5">N</span>)
+  <span style="color:#007020;font-weight:bold">fun</span>() -<span style="">&gt;
+</span><span style="">    {N, </span><span style="color:#d55537;font-weight:bold">naturals</span>(<span style="color:#bb60d5">N</span> <span style="color:#666">+</span> <span style="color:#40a070">1</span>)}
+  <span style="color:#007020;font-weight:bold">end</span>.</code></pre></div>
+<p>Easy! The stream of natural numbers starting at <code>N</code> is followed by the stream starting at <code>N + 1</code>. Notice that our <code>naturals/1</code> stream is <em>infinite</em>, as it unconditionally refers to itself. Since our recursive call is wrapped up neatly in a <code>fun</code>, we can express this definition without fear of an infinite loop. We can check that it works as expected in the repl.</p>
+
+<pre><code>1&gt; c(streams).
+{ok, streams}
+2&gt; Ns = naturals().
+#Fun&lt;streams.2.68943458&gt;
+3&gt; {_, Ns2} = yield(Ns).
+{0, #Fun&lt;streams.2.68943458&gt;}
+4&gt; {_, Ns3} = yield(Ns2).
+{1, #Fun&lt;streams.2.68943458&gt;}
+5&gt; {_, Ns4} = yield(Ns3).
+{2, #Fun&lt;streams.2.68943458&gt;}
+</code></pre>
+
+<p>As you can see on the right-hand side, we are indeed getting back <code>0, 1, 2</code> as we repeatedly call <code>yield</code>.</p>
+
+<h2 id="stream-transformers">Stream Transformers</h2>
+
+<p>Now that we have our infinite stream of integers, we need to be able to transform this stream in a list-like fashion. Erlang provides higher-order functions such as <code>lists:map/2</code> and <code>lists:filter/2</code> to manipulate and transform its lists. We&rsquo;ll define the same for streams.</p>
+
+<p>Implementing <code>map/2</code> is pretty straightforward. Like before we can express map quite nicely with a recursive call. If we have elements in the original stream, we immediately apply <code>Fun</code> to the next element while returning the mapped &ldquo;tail&rdquo;, otherwise we halt.</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-erlang" data-lang="erlang"><span style="color:#06287e">map</span>(<span style="color:#bb60d5">Fun</span>, <span style="color:#bb60d5">Stream</span>) -<span style="">&gt;
+</span><span style="">  </span><span style="color:#d55537;font-weight:bold">fun</span>() -<span style="">&gt;
+</span><span style="">    </span><span style="color:#d55537;font-weight:bold">case</span> <span style="color:#06287e">yield</span>(<span style="color:#bb60d5">Stream</span>) <span style="color:#007020;font-weight:bold">of</span>
+      {<span style="color:#bb60d5">X</span>, <span style="color:#bb60d5">Xs</span>} -<span style="">&gt; {F</span><span style="color:#d55537;font-weight:bold">un</span>(<span style="color:#bb60d5">X</span>), <span style="color:#06287e">map</span>(<span style="color:#bb60d5">Fun</span>, <span style="color:#bb60d5">Xs</span>)};
+      halt -<span style="">&gt; </span><span style="color:#d55537;font-weight:bold">halt</span>
+    <span style="color:#007020;font-weight:bold">end</span>
+  <span style="color:#007020;font-weight:bold">end</span>.</code></pre></div>
+<p><code>filter/2</code> is a bit trickier, can you think of the reason?</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-erlang" data-lang="erlang"><span style="color:#06287e">filter</span>(<span style="color:#bb60d5">Pred</span>, <span style="color:#bb60d5">Stream</span>) -<span style="">&gt;
+</span><span style="">  </span><span style="color:#d55537;font-weight:bold">fun</span>() -<span style="">&gt; </span><span style="color:#d55537;font-weight:bold">do_filter</span>(<span style="color:#bb60d5">Pred</span>, <span style="color:#bb60d5">Stream</span>) <span style="color:#007020;font-weight:bold">end</span>.
+
+<span style="color:#06287e">do_filter</span>(<span style="color:#bb60d5">Pred</span>, <span style="color:#bb60d5">Stream</span>) -<span style="">&gt;
+</span><span style="">  </span><span style="color:#d55537;font-weight:bold">case</span> <span style="color:#06287e">yield</span>(<span style="color:#bb60d5">Stream</span>) <span style="color:#007020;font-weight:bold">of</span>
+    {<span style="color:#bb60d5">X</span>, <span style="color:#bb60d5">Xs</span>} -<span style="">&gt;
+</span><span style="">      </span><span style="color:#d55537;font-weight:bold">case</span> <span style="color:#bb60d5">Pred</span>(<span style="color:#bb60d5">X</span>) <span style="color:#007020;font-weight:bold">of</span>
+        true -<span style="">&gt; {X, </span><span style="color:#d55537;font-weight:bold">filter</span>(<span style="color:#bb60d5">Fun</span>, <span style="color:#bb60d5">Xs</span>)};
+        false -<span style="">&gt; </span><span style="color:#d55537;font-weight:bold">do_filter</span>(<span style="color:#bb60d5">Fun</span>, <span style="color:#bb60d5">Xs</span>)
+      <span style="color:#007020;font-weight:bold">end</span>;
+    halt -<span style="">&gt; </span><span style="color:#d55537;font-weight:bold">halt</span>
+  <span style="color:#007020;font-weight:bold">end</span>.</code></pre></div>
+<p>Unlike <code>map</code>, filter can contain less elements than the original stream, which means we need a way of <em>skipping</em> elements. To get around this, we define a helper <code>do_filter</code> as the eagerly-evaluated innards of our lazy stream. If the predicate function returns true, everything fine and dandy and we can recursively call filter like before.</p>
+
+<p>If it&rsquo;s false, however, we need to call <code>do_filter</code> which will evaluate <strong>immediately</strong>. This should be expected - after all, the whole point of lazy evaluation is to only perform computation when needed, and we need to continue to the next element.</p>
+
+<h2 id="forcing-evalution">Forcing evalution</h2>
+
+<p>Now that we can define and transform our stream, we need to be able to evaluate it. Otherwise it wouldn&rsquo;t serve much use, would it? We&rsquo;ll define a helper, <code>to_list/1</code> that repeated <code>yield</code>s elements into a list until we reach the end of the stream:</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-erlang" data-lang="erlang">-<span style="color:#d55537;font-weight:bold">spec</span> <span style="color:#06287e">to_list</span>(<span style="color:#06287e">stream</span>(<span style="color:#bb60d5">A</span>)) -<span style="">&gt; </span><span style="color:#d55537;font-weight:bold">list</span>(<span style="color:#bb60d5">A</span>).
+<span style="color:#06287e">to_list</span>(<span style="color:#bb60d5">Stream</span>) -<span style="">&gt; </span><span style="color:#d55537;font-weight:bold">to_list</span>(<span style="color:#bb60d5">Stream</span>, []).
+
+<span style="color:#06287e">to_list</span>(<span style="color:#bb60d5">Stream</span>, <span style="color:#bb60d5">Acc</span>) -<span style="">&gt;
+</span><span style="">  </span><span style="color:#d55537;font-weight:bold">case</span> <span style="color:#06287e">yield</span>(<span style="color:#bb60d5">Stream</span>) <span style="color:#007020;font-weight:bold">of</span>
+    {<span style="color:#bb60d5">X</span>, <span style="color:#bb60d5">Xs</span>} -<span style="">&gt; </span><span style="color:#d55537;font-weight:bold">to_list</span>(<span style="color:#bb60d5">Xs</span>, [<span style="color:#bb60d5">X</span>|<span style="color:#bb60d5">Acc</span>])
+    halt -<span style="">&gt; </span><span style="color:#d55537;font-weight:bold">lists</span>:<span style="color:#06287e">reverse</span>(<span style="color:#bb60d5">Acc</span>);
+  <span style="color:#007020;font-weight:bold">end</span>.</code></pre></div>
+<p>However this alone isn&rsquo;t enough to perform our computation. Up until now our stream has been infinite. If we called <code>to_list</code> on our stream now, we&rsquo;d continue <code>yield</code>ing elements until we ran out of memory.</p>
+
+<pre><code>1&gt; streams:to_list(streams:naturals()).
+(Hangs forever...)
+</code></pre>
+
+<p>Let&rsquo;s handle this by defining a way of limiting our stream to a finite length:</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-erlang" data-lang="erlang">-<span style="color:#d55537;font-weight:bold">spec</span> <span style="color:#06287e">take</span>(<span style="color:#06287e">integer</span>(), <span style="color:#06287e">stream</span>(<span style="color:#bb60d5">A</span>)) -<span style="">&gt; </span><span style="color:#d55537;font-weight:bold">stream</span>(<span style="color:#bb60d5">A</span>).
+<span style="color:#06287e">take</span>(<span style="color:#bb60d5">N</span>, <span style="color:#bb60d5">Stream</span>) <span style="color:#007020;font-weight:bold">when</span> <span style="color:#bb60d5">N</span> <span style="color:#666">&gt;=</span> <span style="color:#40a070">0</span> -<span style="">&gt;
+</span><span style="">  </span><span style="color:#d55537;font-weight:bold">fun</span>() -<span style="">&gt;
+</span><span style="">    </span><span style="color:#d55537;font-weight:bold">case</span> <span style="color:#06287e">yield</span>(<span style="color:#bb60d5">Stream</span>) <span style="color:#007020;font-weight:bold">of</span>
+      {<span style="color:#bb60d5">X</span>, <span style="color:#bb60d5">Xs</span>} -<span style="">&gt;
+</span><span style="">        </span><span style="color:#d55537;font-weight:bold">case</span> <span style="color:#bb60d5">N</span> <span style="color:#007020;font-weight:bold">of</span>
+          <span style="color:#40a070">0</span> -<span style="">&gt; </span><span style="color:#d55537;font-weight:bold">halt</span>;
+          _ -<span style="">&gt; {X, </span><span style="color:#d55537;font-weight:bold">take</span>(<span style="color:#bb60d5">N</span> -<span style=""> 1, X</span><span style="color:#d55537;font-weight:bold">s</span>)}.
+        <span style="color:#007020;font-weight:bold">end</span>;
+      halt -<span style="">&gt; </span><span style="color:#d55537;font-weight:bold">halt</span>;
+    <span style="color:#007020;font-weight:bold">end</span>
+  <span style="color:#007020;font-weight:bold">end</span>.</code></pre></div>
+<p>While <code>take/2</code> is still recursive, notice that this time there&rsquo;s a base case in the recursion. If we&rsquo;re taking <code>0</code> elements, then there isn&rsquo;t anything to take at all! With that out of the way, we can finally replicate the Haskell example from earlier:</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-erlang" data-lang="erlang"><span style="color:#bb60d5">OddIntegers</span> <span style="color:#666">=</span> <span style="color:#0e84b5;font-weight:bold">streams</span>:<span style="color:#06287e">filter</span>(<span style="color:#007020;font-weight:bold">fun</span>(<span style="color:#bb60d5">N</span>) -<span style="">&gt; </span><span style="color:#d55537;font-weight:bold">mod</span>(<span style="color:#bb60d5">N</span>, <span style="color:#40a070">2</span>) <span style="color:#666">&gt;</span> <span style="color:#40a070">0</span> <span style="color:#007020;font-weight:bold">end</span>, <span style="color:#0e84b5;font-weight:bold">streams</span>:<span style="color:#06287e">naturals</span>()),
+<span style="color:#bb60d5">OddSquares</span> <span style="color:#666">=</span> <span style="color:#0e84b5;font-weight:bold">streams</span>:<span style="color:#06287e">map</span>(<span style="color:#007020;font-weight:bold">fun</span>(<span style="color:#bb60d5">N</span>) -<span style="">&gt; N * N </span><span style="color:#d55537;font-weight:bold">end</span>, <span style="color:#bb60d5">OddIntegers</span>),
+<span style="color:#bb60d5">Take10</span> <span style="color:#666">=</span> <span style="color:#0e84b5;font-weight:bold">streams</span>:<span style="color:#06287e">take</span>(<span style="color:#40a070">10</span>, <span style="color:#bb60d5">OddSquares</span>),
+<span style="color:#0e84b5;font-weight:bold">streams</span>:<span style="color:#06287e">to_list</span>(<span style="color:#bb60d5">Take10</span>).
+<span style="">%%</span> <span style="color:#666">&gt;</span> [<span style="color:#40a070">1</span>,<span style="color:#40a070">9</span>,<span style="color:#40a070">25</span>,<span style="color:#40a070">49</span>,<span style="color:#40a070">81</span>,<span style="color:#40a070">121</span>,<span style="color:#40a070">169</span>,<span style="color:#40a070">225</span>,<span style="color:#40a070">289</span>,<span style="color:#40a070">361</span>]</code></pre></div>
+<h2 id="yielding-from-lists">Yielding from lists</h2>
+
+<p>As a bonus, we can easily add a case to <code>yield/1</code> that lets us use streams and lists interchangeably.</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-erlang" data-lang="erlang">-<span style="color:#d55537;font-weight:bold">spec</span> <span style="color:#06287e">yield</span>(<span style="color:#bb60d5">Stream</span> :: <span style="color:#06287e">stream</span>(<span style="color:#bb60d5">A</span>)) -<span style="">&gt; </span><span style="color:#d55537;font-weight:bold">halt</span> | {<span style="color:#bb60d5">A</span>, <span style="color:#06287e">stream</span>(<span style="color:#bb60d5">A</span>)}.
+<span style="color:#06287e">yield</span>(<span style="color:#bb60d5">F</span>) <span style="color:#007020;font-weight:bold">when</span> <span style="color:#007020">is_function</span>(<span style="color:#bb60d5">F</span>) -<span style="">&gt; F().
+</span><span style=""></span><span style="color:#d55537;font-weight:bold">yield</span>([<span style="color:#bb60d5">X</span>|<span style="color:#bb60d5">Xs</span>]) -<span style="">&gt; {X, X</span><span style="color:#d55537;font-weight:bold">s</span>};
+<span style="color:#06287e">yield</span>([]) -<span style="">&gt; </span><span style="color:#d55537;font-weight:bold">halt</span>.</code></pre></div>
+<p>In this way, we can think of lists as their own type of stream. This is why we included the level of indirection with <code>yield</code>. It acts as a simple interface - by adding additional function heads we can extend the notion of a stream to any iterable structure. This is quite powerful, as it lets us mix-and-match these structures whenever we want. <sup class="footnote-ref" id="fnref:enumerable"><a href="#fn:enumerable">2</a></sup></p>
+
+<h2 id="until-next-time">Until next time</h2>
+
+<p>We&rsquo;ve seen that while infinite streams are certainly a useful tool to have as a first-class feature, they&rsquo;re easily expressible through the power of simple functions. There are more complex examples of stream transformers and combinators available, but I&rsquo;ll leave those for another time. If you&rsquo;re curious or want to play around with them right now, all of the above (and more!) is available <a href="https://github.com/cwbriones/streams">on my github</a>.</p>
+
+<p>Cheers!</p>
+<div class="footnotes">
+
+<hr />
+
+<ol>
+<li id="fn:streams">Those of you more familiar with the erlang ecosystem will know that I shamelessly took this from the excellent <a href="http://elixir-lang.org/docs/stable/elixir/Stream.html">Stream</a> module found in Elixir.
+ <a class="footnote-return" href="#fnref:streams"><sup>[return]</sup></a></li>
+<li id="fn:enumerable">This idea is used to great effect in Elixir with its <a href="http://elixir-lang.org/docs/stable/elixir/Enumerable.html">Enumerable</a> protocol, and its notion of protocols in general.
+ <a class="footnote-return" href="#fnref:enumerable"><sup>[return]</sup></a></li>
+</ol>
+</div>
+
+      </div>
+    </div>
+  </div>
+  <div class="pure-u-1-24 pure-u-md-5-24"></div>
+</div>
+
+<div class="footer pure-g">
+  <div class="pure-u-1-24 pure-u-md-5-24"></div>
+  <div class="pure-u-11-12 pure-u-md-7-12">
+    <div class="footer-content">
+      <div class="pure-menu pure-menu-horizontal">
+        <ul>
+          
+          <li class="pure-menu-item" id="foot-name">© Christian Briones</li>
+          
+
+          
+          <li class="pure-menu-item">
+            <a href="mailto:christian@briones.io" class="pure-menu-link">Email</a>
+          </li>
+          
+
+          
+          <li class="pure-menu-item">
+            <a href="https://github.com/cwbriones" class="pure-menu-link">GitHub</a>
+          </li>
+          
+
+          
+          <li class="pure-menu-item">
+            <a href="https://twitter.com/cwbriones" class="pure-menu-link">Twitter</a>
+          </li>
+          
+
+          
+
+        </ul>
+        <a href="#" class="pure-menu-link pull-right" id="gototop-btn">↑↑</a>
+        
+      </div>
+      
+    </div>
+  </div>
+  <div class="pure-u-1-24 pure-u-md-5-24"></div>
+</div>
+
+<script type="text/javascript">
+  go();
+  window.addEventListener('resize', go);
+  function go(){
+    var d=document.querySelector(".desktop")
+    if(document.documentElement.clientWidth > 768) {
+      d.style.display="";
+    } else {
+      d.style.display="none";
+    }
+  }
+</script>
+<script type="text/javascript">
+  var a=document.querySelector("#toggle-btn"),b=document.querySelector("#toggle-content");a.addEventListener("click",function(){""==b.style.display?(b.style.display="none",a.innerHTML="☰"):(b.style.display="",a.innerHTML="X")});</script>
+
+
+</body>
+</html>
+

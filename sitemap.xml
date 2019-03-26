@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>http://briones.io/posts/blog-take-2/</loc>
+    <lastmod>2019-03-24T18:13:29-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://briones.io/about/</loc>
+    <lastmod>2019-03-24T18:09:21-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://briones.io/posts/2017-04-02-on-ducktyping/</loc>
+    <lastmod>2017-04-02T22:01:49+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://briones.io/posts/2016-10-08-getting-lazy-with-erlang/</loc>
+    <lastmod>2016-10-08T21:32:57+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://briones.io/categories/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://briones.io/tags/meta/</loc>
+    <lastmod>2019-03-24T18:13:29-07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://briones.io/posts/</loc>
+    <lastmod>2019-03-24T18:13:29-07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://briones.io/tags/software/</loc>
+    <lastmod>2017-04-02T22:01:49+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://briones.io/tags/</loc>
+    <lastmod>2019-03-24T18:13:29-07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://briones.io/</loc>
+    <lastmod>2019-03-24T18:13:29-07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+</urlset>

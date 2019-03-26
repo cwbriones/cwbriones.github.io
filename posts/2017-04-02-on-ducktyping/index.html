@@ -3,8 +3,8 @@
 <head>
   
   <meta charset="utf-8">
-  <title>christian&#39;s blog.</title>
-  <meta name="description" content="christian&#39;s blog.">
+  <title>On Duck-Typing</title>
+  <meta name="description" content="On Duck-Typing">
   <meta name="author" content="Christian Briones">
   
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -336,8 +336,6 @@ a {
 
   
   
-  <link href="http://briones.io/index.xml" rel="alternate" type="application/rss+xml" title="christian&#39;s blog. Feed" />
-  
 
   <meta name="generator" content="Hugo 0.54.0" />
 
@@ -381,60 +379,20 @@ a {
 
 <div class="pure-g">
   <div class="pure-u-1-24 pure-u-md-5-24"></div>
-	<div class="pure-u-11-12 pure-u-md-7-12">
-	<div class="post-content">
-	
-	  <p class="posts-name">Recent posts:</p>
+  <div class="pure-u-11-12 pure-u-md-7-12">
+    <div class="post">
 
-	  <ul class="posts">
-		
-		
-		
-		<li>
-		  
-		  <a class="post-list" href="http://briones.io/posts/blog-take-2/">Blog - Take Two</a>
-
-      <p class="footnote">
-        <time datetime="2019-03-24 18:13:29 -0700 PDT">
-          
-            2019-03-24
-          
-        </time>
-
+      <div class="post-title">
+        <p class="footnote">
+          <time datetime="2017-04-02 22:01:49 &#43;0000 UTC">
+            
+              2017-04-02
+            
+          </time>
+        
         
         |
         
-
-        
-        tags: [ <a href="http://briones.io/tags/meta">meta</a> ]
-        
-
-        
-
-        
-
-      </p>
-    </li>
-    
-    
-		
-    
-		
-		<li>
-		  
-		  <a class="post-list" href="http://briones.io/posts/2017-04-02-on-ducktyping/">On Duck-Typing</a>
-
-      <p class="footnote">
-        <time datetime="2017-04-02 22:01:49 &#43;0000 UTC">
-          
-            2017-04-02
-          
-        </time>
-
-        
-        |
-        
-
         
         tags: [ <a href="http://briones.io/tags/software">software</a> ]
         
@@ -442,41 +400,86 @@ a {
         
 
         
+        </p>
+        <h1>On Duck-Typing</h1>
+      </div>
 
-      </p>
-    </li>
-    
-    
-		
-		<li>
-		  
-		  <a class="post-list" href="http://briones.io/posts/2016-10-08-getting-lazy-with-erlang/">Getting Lazy with Erlang</a>
+      <div class="post-content">
+        <p><strong>Note: The following is written with Python in mind, but the idea just as easily applies to something like JavaScript with a s/isinstance/instanceof/g, among other things.</strong></p>
 
-      <p class="footnote">
-        <time datetime="2016-10-08 21:32:57 &#43;0000 UTC">
-          
-            2016-10-08
-          
-        </time>
+<p>Let&rsquo;s say you&rsquo;re writing a database pooling service <sup class="footnote-ref" id="fnref:1"><a href="#fn:1">1</a></sup> in Python, and have something like this:</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007020;font-weight:bold">class</span> <span style="color:#0e84b5;font-weight:bold">MyDBPool</span>(<span style="color:#007020">object</span>):
+  <span style="color:#4070a0">&#34;&#34;&#34;
+</span><span style="color:#4070a0">  A database connection pool.
+</span><span style="color:#4070a0">  &#34;&#34;&#34;</span>
+  <span style="color:#007020;font-weight:bold">def</span> __init__(self):
+    <span style="color:#60a0b0;font-style:italic"># Some initialization here</span>
 
-        
-        |
-        
+  <span style="color:#007020;font-weight:bold">def</span> <span style="color:#06287e">get_connection</span>(self):
+    <span style="color:#4070a0">&#34;&#34;&#34;
+</span><span style="color:#4070a0">    Return a connection to the database.
+</span><span style="color:#4070a0">    &#34;&#34;&#34;</span>
+    <span style="color:#60a0b0;font-style:italic"># Your implementation here</span></code></pre></div>
+<p>Unsurprisingly, somewhere within in the rest of your code it&rsquo;s used:</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007020;font-weight:bold">def</span> <span style="color:#06287e">fetch_user</span>(db_pool, user_id):
+  conn <span style="color:#666">=</span> db_pool<span style="color:#666">.</span>get_connection()
+  resp <span style="color:#666">=</span> conn<span style="color:#666">.</span>query(<span style="color:#4070a0">&#34;SELECT * FROM users WHERE id = ?&#34;</span>, user_id)
+  <span style="color:#60a0b0;font-style:italic"># ...</span></code></pre></div>
+<p>Like any object-oriented programmer worth their salt, you like to think in abstractions. A neat little package in Python&rsquo;s standard library lets you mark out your interface.</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#60a0b0;font-style:italic"># abc as in &#34;Abstract Base Class&#34;</span>
+<span style="color:#007020;font-weight:bold">from</span> <span style="color:#0e84b5;font-weight:bold">abc</span> <span style="color:#007020;font-weight:bold">import</span> ABCMeta
+<span style="color:#007020;font-weight:bold">from</span> <span style="color:#0e84b5;font-weight:bold">abc</span> <span style="color:#007020;font-weight:bold">import</span> abstractmethod
 
-        
-        tags: [ <a href="http://briones.io/tags/software">software</a> ]
-        
+<span style="color:#60a0b0;font-style:italic">#</span>
+<span style="color:#60a0b0;font-style:italic"># Let&#39;s define our interface...</span>
+<span style="color:#60a0b0;font-style:italic">#</span>
+<span style="color:#007020;font-weight:bold">class</span> <span style="color:#0e84b5;font-weight:bold">DBPool</span>(<span style="color:#007020">object</span>, metaclass<span style="color:#666">=</span>ABCMeta):
+  <span style="color:#007020;font-weight:bold">def</span> __init__(<span style="color:#007020">object</span>):
+    <span style="color:#007020;font-weight:bold">pass</span>
 
-        
+  <span style="color:#60a0b0;font-style:italic"># This decorator says &#34;throw an error if this isn&#39;t implemented&#34;</span>
+  <span style="color:#555;font-weight:bold">@abstractmethod</span>
+  <span style="color:#007020;font-weight:bold">def</span> <span style="color:#06287e">get_connection</span>(self):
+    <span style="color:#4070a0">&#34;&#34;&#34;
+</span><span style="color:#4070a0">    Return a connection to the database.
+</span><span style="color:#4070a0">    &#34;&#34;&#34;</span>
+    <span style="color:#007020;font-weight:bold">pass</span>
 
-        
+<span style="color:#60a0b0;font-style:italic">#</span>
+<span style="color:#60a0b0;font-style:italic"># ...and separate it from our implementation</span>
+<span style="color:#60a0b0;font-style:italic">#</span>
+<span style="color:#007020;font-weight:bold">class</span> <span style="color:#0e84b5;font-weight:bold">MyDBPool</span>(DBPool):
+  <span style="color:#60a0b0;font-style:italic"># Your implementation here</span></code></pre></div>
+<p>&ldquo;Hold on, this can be even safer!&rdquo;, you think. &ldquo;We shouldn&rsquo;t just let you throw anything in when used, you have to <em>support the interface</em>.&rdquo;</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007020;font-weight:bold">def</span> <span style="color:#06287e">fetch_user</span>(db_pool, user_id):
+  <span style="color:#60a0b0;font-style:italic"># Aha! Throw in a quick type-check</span>
+  <span style="color:#007020;font-weight:bold">if</span> <span style="color:#007020;font-weight:bold">not</span> <span style="color:#007020">isinstance</span>(db_pool, DBPool):
+    <span style="color:#007020;font-weight:bold">raise</span> <span style="color:#007020">TypeError</span>(<span style="color:#4070a0">&#34;db_pool does not implement DBPool&#34;</span>)
+  conn <span style="color:#666">=</span> db_pool<span style="color:#666">.</span>get_connection()
+  resp <span style="color:#666">=</span> conn<span style="color:#666">.</span>query(<span style="color:#4070a0">&#34;SELECT * FROM users WHERE id = ?&#34;</span>, user_id)
+  <span style="color:#60a0b0;font-style:italic"># ...</span></code></pre></div>
+<p>Now you&rsquo;ve fallen into a trap of types. Say it with me: <strong>duck-typing has no explicit interfaces</strong>. By doing this, you may think you&rsquo;ve helped yourself but you&rsquo;ve really just tied down your design to your implementation. Imagine someone else comes along and writes a better pooling solution, then you go to wire it in:</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">db_pool <span style="color:#666">=</span> OnePoolToRuleThemAll(host, port)
 
-      </p>
-    </li>
-    
-    
-    </ul>
-  </div>
+fetch_user(db_pool, user_id)
+<span style="color:#60a0b0;font-style:italic"># =&gt; TypeError: db_pool does not implement DBPool</span></code></pre></div>
+<p>Yet clearly, this new pool was written <em>for your interface</em>. When you&rsquo;re in a duck-typed language like Python, you need to stop thinking about types in terms of strict class hierarchy. If a class says it can do it, then let it. <sup class="footnote-ref" id="fnref:2"><a href="#fn:2">2</a></sup></p>
+
+<p>Remember the mantra. If it walks like a duck, and quacks like a duck, it&rsquo;s (for all practical purposes) a duck.</p>
+<div class="footnotes">
+
+<hr />
+
+<ol>
+<li id="fn:1">This is completely arbitrary, but helps me avoid the less concrete <code>Animal &gt; Dog</code> sub-typing example that seems to be everywhere.
+ <a class="footnote-return" href="#fnref:1"><sup>[return]</sup></a></li>
+<li id="fn:2">By no means am I knocking the use of <code>abc</code>. It&rsquo;s a useful bookkeeping tool for keeping your own interfaces in check. Just don&rsquo;t fall into a trap of type-checking yourself, that&rsquo;s a job for the VM.
+ <a class="footnote-return" href="#fnref:2"><sup>[return]</sup></a></li>
+</ol>
+</div>
+
+      </div>
+    </div>
   </div>
   <div class="pure-u-1-24 pure-u-md-5-24"></div>
 </div>
@@ -513,8 +516,6 @@ a {
 
         </ul>
         <a href="#" class="pure-menu-link pull-right" id="gototop-btn">↑↑</a>
-        
-        <a href="http://briones.io/index.xml" class="pure-menu-link pull-right">RSS</a>
         
       </div>
       

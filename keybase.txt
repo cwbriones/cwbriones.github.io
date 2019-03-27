@@ -1,0 +1,52 @@
+https://keybase.io/chrisbriones
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of http://chrisbriones.com
+  * I am chrisbriones (https://keybase.io/chrisbriones) on keybase.
+  * I have a public key ASAFIjEAI6lQSsZT2ya2Pf8aofbvguhrl9YSFdsuMGEpBAo
+
+To do so, I am signing this object:
+
+{
+    "body": {
+        "key": {
+            "eldest_kid": "01200522310023a9504ac653db26b63dff1aa1f6ef82e86b97d61215db2e306129040a",
+            "host": "keybase.io",
+            "kid": "01200522310023a9504ac653db26b63dff1aa1f6ef82e86b97d61215db2e306129040a",
+            "uid": "98f5488f1ad70d3d02aa26de7ef7f919",
+            "username": "chrisbriones"
+        },
+        "service": {
+            "hostname": "chrisbriones.com",
+            "protocol": "http:"
+        },
+        "type": "web_service_binding",
+        "version": 1
+    },
+    "client": {
+        "name": "keybase.io go client",
+        "version": "1.0.15"
+    },
+    "ctime": 1459837410,
+    "expire_in": 504576000,
+    "merkle_root": {
+        "ctime": 1459837356,
+        "hash": "5ec95d9b46b9ffda0f56e89e04fa64ee22219e5793e794c013905486c7a6e76ec0e0878d6575f46a11a6eed04ebb9a610fa23fe1bb3c8c71658ecfb979b267af",
+        "seqno": 428958
+    },
+    "prev": "7a5cd7328c035b4ce5e077cc83f692ffd7b723c5071cbf961c7b188f3cc7d56b",
+    "seqno": 22,
+    "tag": "signature"
+}
+
+which yields the signature:
+
+g6Rib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEgBSIxACOpUErGU9smtj3/GqH274Loa5fWEhXbLjBhKQQKp3BheWxvYWTFAvx7ImJvZHkiOnsia2V5Ijp7ImVsZGVzdF9raWQiOiIwMTIwMDUyMjMxMDAyM2E5NTA0YWM2NTNkYjI2YjYzZGZmMWFhMWY2ZWY4MmU4NmI5N2Q2MTIxNWRiMmUzMDYxMjkwNDBhIiwiaG9zdCI6ImtleWJhc2UuaW8iLCJraWQiOiIwMTIwMDUyMjMxMDAyM2E5NTA0YWM2NTNkYjI2YjYzZGZmMWFhMWY2ZWY4MmU4NmI5N2Q2MTIxNWRiMmUzMDYxMjkwNDBhIiwidWlkIjoiOThmNTQ4OGYxYWQ3MGQzZDAyYWEyNmRlN2VmN2Y5MTkiLCJ1c2VybmFtZSI6ImNocmlzYnJpb25lcyJ9LCJzZXJ2aWNlIjp7Imhvc3RuYW1lIjoiY2hyaXNicmlvbmVzLmNvbSIsInByb3RvY29sIjoiaHR0cDoifSwidHlwZSI6IndlYl9zZXJ2aWNlX2JpbmRpbmciLCJ2ZXJzaW9uIjoxfSwiY2xpZW50Ijp7Im5hbWUiOiJrZXliYXNlLmlvIGdvIGNsaWVudCIsInZlcnNpb24iOiIxLjAuMTUifSwiY3RpbWUiOjE0NTk4Mzc0MTAsImV4cGlyZV9pbiI6NTA0NTc2MDAwLCJtZXJrbGVfcm9vdCI6eyJjdGltZSI6MTQ1OTgzNzM1NiwiaGFzaCI6IjVlYzk1ZDliNDZiOWZmZGEwZjU2ZTg5ZTA0ZmE2NGVlMjIyMTllNTc5M2U3OTRjMDEzOTA1NDg2YzdhNmU3NmVjMGUwODc4ZDY1NzVmNDZhMTFhNmVlZDA0ZWJiOWE2MTBmYTIzZmUxYmIzYzhjNzE2NThlY2ZiOTc5YjI2N2FmIiwic2Vxbm8iOjQyODk1OH0sInByZXYiOiI3YTVjZDczMjhjMDM1YjRjZTVlMDc3Y2M4M2Y2OTJmZmQ3YjcyM2M1MDcxY2JmOTYxYzdiMTg4ZjNjYzdkNTZiIiwic2Vxbm8iOjIyLCJ0YWciOiJzaWduYXR1cmUifaNzaWfEQJbMc2Rh81pwgByIVdY7gCY3iNVF1Zs34msgQLUEaxqBY2XlajR4qI91l+fgsQk/CGJZZn7AmY43pUzlmodZnwKoc2lnX3R5cGUgo3RhZ80CAqd2ZXJzaW9uAQ==
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/chrisbriones
+

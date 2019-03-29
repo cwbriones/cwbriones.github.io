@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>christian&#39;s blog.</title>
+    <title>christian&#39;s blog</title>
     <link>https://briones.io/</link>
-    <description>Recent content on christian&#39;s blog.</description>
+    <description>Recent content on christian&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>christian@briones.io (Christian Briones)</managingEditor>
@@ -25,7 +25,7 @@ What this place should be is a dumping ground for my thoughts - well sculpted or
     </item>
     
     <item>
-      <title></title>
+      <title>Why hello there!</title>
       <link>https://briones.io/about/</link>
       <pubDate>Sun, 24 Mar 2019 18:09:21 -0700</pubDate>
       <author>christian@briones.io (Christian Briones)</author>

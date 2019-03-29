@@ -1,503 +1,181 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  
   <meta charset="utf-8">
   <title>Posts</title>
   <meta name="description" content="Posts">
   <meta name="author" content="Christian Briones">
-  
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  
-  <noscript>
-    <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:400,600" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="https://briones.io/css/fonts.css">
-  </noscript>
-  
-  
-  <style type="text/css" media="screen">
-    /*!
-Pure v1.0.0
-Copyright 2013 Yahoo!
-Licensed under the BSD License.
-https://github.com/yahoo/pure/blob/master/LICENSE.md
-*/
-/*!
-normalize.css v^3.0 | MIT License | git.io/normalize
-Copyright (c) Nicolas Gallagher and Jonathan Neal
-*/
-/*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */img,legend{border:0}legend,td,th{padding:0}html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section,summary{display:block}audio,canvas,progress,video{display:inline-block;vertical-align:baseline}audio:not([controls]){display:none;height:0}[hidden],template{display:none}a{background-color:transparent}a:active,a:hover{outline:0}abbr[title]{border-bottom:1px dotted}b,optgroup,strong{font-weight:700}dfn{font-style:italic}h1{font-size:2em;margin:.67em 0}mark{background:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-.5em}sub{bottom:-.25em}svg:not(:root){overflow:hidden}figure{margin:1em 40px}hr{box-sizing:content-box;height:0}pre,textarea{overflow:auto}code,kbd,pre,samp{font-family:monospace,monospace;font-size:1em}button,input,optgroup,select,textarea{color:inherit;font:inherit;margin:0}button{overflow:visible}button,select{text-transform:none}button,html input[type=button],input[type=reset],input[type=submit]{-webkit-appearance:button;cursor:pointer}button[disabled],html input[disabled]{cursor:default}button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}input{line-height:normal}input[type=checkbox],input[type=radio]{box-sizing:border-box;padding:0}input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-spin-button{height:auto}input[type=search]{-webkit-appearance:textfield;box-sizing:content-box}input[type=search]::-webkit-search-cancel-button,input[type=search]::-webkit-search-decoration{-webkit-appearance:none}fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}table{border-collapse:collapse;border-spacing:0}.hidden,[hidden]{display:none!important}.pure-img{max-width:100%;height:auto;display:block}
-  </style>
-  <style type="text/css" media="screen">
-    /*!
-Pure v1.0.0
-Copyright 2013 Yahoo!
-Licensed under the BSD License.
-https://github.com/yahoo/pure/blob/master/LICENSE.md
-*/
-.pure-menu{box-sizing:border-box}.pure-menu-fixed{position:fixed;left:0;top:0;z-index:3}.pure-menu-item,.pure-menu-list{position:relative}.pure-menu-list{list-style:none;margin:0;padding:0}.pure-menu-item{padding:0;margin:0;height:100%}.pure-menu-heading,.pure-menu-link{display:block;text-decoration:none;white-space:nowrap}.pure-menu-horizontal{width:100%;white-space:normal}.pure-menu-horizontal .pure-menu-list{display:inline-block}.pure-menu-horizontal .pure-menu-heading,.pure-menu-horizontal .pure-menu-item,.pure-menu-horizontal .pure-menu-separator{display:inline-block;zoom:1;vertical-align:middle}.pure-menu-item .pure-menu-item{display:block}.pure-menu-children{display:none;position:absolute;left:100%;top:0;margin:0;padding:0;z-index:3}.pure-menu-horizontal .pure-menu-children{left:0;top:auto;width:inherit}.pure-menu-active>.pure-menu-children,.pure-menu-allow-hover:hover>.pure-menu-children{display:block;position:absolute}.pure-menu-has-children>.pure-menu-link:after{padding-left:.5em;content:"\25B8";font-size:small}.pure-menu-horizontal .pure-menu-has-children>.pure-menu-link:after{content:"\25BE"}.pure-menu-scrollable{overflow-y:scroll;overflow-x:hidden}.pure-menu-scrollable .pure-menu-list{display:block}.pure-menu-horizontal.pure-menu-scrollable .pure-menu-list{display:inline-block}.pure-menu-horizontal.pure-menu-scrollable{white-space:nowrap;overflow-y:hidden;overflow-x:auto;-ms-overflow-style:none;-webkit-overflow-scrolling:touch;padding:.5em 0}.pure-menu-horizontal.pure-menu-scrollable::-webkit-scrollbar{display:none}.pure-menu-horizontal .pure-menu-children .pure-menu-separator,.pure-menu-separator{background-color:#ccc;height:1px;margin:.3em 0}.pure-menu-horizontal .pure-menu-separator{width:1px;height:1.3em;margin:0 .3em}.pure-menu-horizontal .pure-menu-children .pure-menu-separator{display:block;width:auto}.pure-menu-heading{text-transform:uppercase;color:#565d64}.pure-menu-link{color:#777}.pure-menu-children{background-color:#fff}.pure-menu-disabled,.pure-menu-heading,.pure-menu-link{padding:.5em 1em}.pure-menu-disabled{opacity:.5}.pure-menu-disabled .pure-menu-link:hover{background-color:transparent}.pure-menu-active>.pure-menu-link,.pure-menu-link:focus,.pure-menu-link:hover{background-color:#eee}.pure-menu-selected .pure-menu-link,.pure-menu-selected .pure-menu-link:visited{color:#000}
-
-  </style>
-  <style type="text/css" media="screen">
-    /*!
-Pure v1.0.0
-Copyright 2013 Yahoo!
-Licensed under the BSD License.
-https://github.com/yahoo/pure/blob/master/LICENSE.md
-*/
-.pure-g{letter-spacing:-.31em;text-rendering:optimizespeed;font-family:FreeSans,Arimo,"Droid Sans",Helvetica,Arial,sans-serif;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-flow:row wrap;-ms-flex-flow:row wrap;flex-flow:row wrap;-webkit-align-content:flex-start;-ms-flex-line-pack:start;align-content:flex-start}@media all and (-ms-high-contrast:none),(-ms-high-contrast:active){table .pure-g{display:block}}.opera-only :-o-prefocus,.pure-g{word-spacing:-.43em}.pure-u,.pure-u-1,.pure-u-1-1,.pure-u-1-12,.pure-u-1-2,.pure-u-1-24,.pure-u-1-3,.pure-u-1-4,.pure-u-1-5,.pure-u-1-6,.pure-u-1-8,.pure-u-10-24,.pure-u-11-12,.pure-u-11-24,.pure-u-12-24,.pure-u-13-24,.pure-u-14-24,.pure-u-15-24,.pure-u-16-24,.pure-u-17-24,.pure-u-18-24,.pure-u-19-24,.pure-u-2-24,.pure-u-2-3,.pure-u-2-5,.pure-u-20-24,.pure-u-21-24,.pure-u-22-24,.pure-u-23-24,.pure-u-24-24,.pure-u-3-24,.pure-u-3-4,.pure-u-3-5,.pure-u-3-8,.pure-u-4-24,.pure-u-4-5,.pure-u-5-12,.pure-u-5-24,.pure-u-5-5,.pure-u-5-6,.pure-u-5-8,.pure-u-6-24,.pure-u-7-12,.pure-u-7-24,.pure-u-7-8,.pure-u-8-24,.pure-u-9-24{display:inline-block;zoom:1;letter-spacing:normal;word-spacing:normal;vertical-align:top;text-rendering:auto}.pure-g [class*=pure-u]{font-family:sans-serif}.pure-u-1-24{width:4.1667%}.pure-u-1-12,.pure-u-2-24{width:8.3333%}.pure-u-1-8,.pure-u-3-24{width:12.5%}.pure-u-1-6,.pure-u-4-24{width:16.6667%}.pure-u-1-5{width:20%}.pure-u-5-24{width:20.8333%}.pure-u-1-4,.pure-u-6-24{width:25%}.pure-u-7-24{width:29.1667%}.pure-u-1-3,.pure-u-8-24{width:33.3333%}.pure-u-3-8,.pure-u-9-24{width:37.5%}.pure-u-2-5{width:40%}.pure-u-10-24,.pure-u-5-12{width:41.6667%}.pure-u-11-24{width:45.8333%}.pure-u-1-2,.pure-u-12-24{width:50%}.pure-u-13-24{width:54.1667%}.pure-u-14-24,.pure-u-7-12{width:58.3333%}.pure-u-3-5{width:60%}.pure-u-15-24,.pure-u-5-8{width:62.5%}.pure-u-16-24,.pure-u-2-3{width:66.6667%}.pure-u-17-24{width:70.8333%}.pure-u-18-24,.pure-u-3-4{width:75%}.pure-u-19-24{width:79.1667%}.pure-u-4-5{width:80%}.pure-u-20-24,.pure-u-5-6{width:83.3333%}.pure-u-21-24,.pure-u-7-8{width:87.5%}.pure-u-11-12,.pure-u-22-24{width:91.6667%}.pure-u-23-24{width:95.8333%}.pure-u-1,.pure-u-1-1,.pure-u-24-24,.pure-u-5-5{width:100%}
-  </style>
-  
-  
-  <style type="text/css" media="screen">
-    /*!
-Pure v1.0.0
-Copyright 2013 Yahoo!
-Licensed under the BSD License.
-https://github.com/yahoo/pure/blob/master/LICENSE.md
-*/
-@media screen and (min-width:35.5em){.pure-u-sm-1,.pure-u-sm-1-1,.pure-u-sm-1-12,.pure-u-sm-1-2,.pure-u-sm-1-24,.pure-u-sm-1-3,.pure-u-sm-1-4,.pure-u-sm-1-5,.pure-u-sm-1-6,.pure-u-sm-1-8,.pure-u-sm-10-24,.pure-u-sm-11-12,.pure-u-sm-11-24,.pure-u-sm-12-24,.pure-u-sm-13-24,.pure-u-sm-14-24,.pure-u-sm-15-24,.pure-u-sm-16-24,.pure-u-sm-17-24,.pure-u-sm-18-24,.pure-u-sm-19-24,.pure-u-sm-2-24,.pure-u-sm-2-3,.pure-u-sm-2-5,.pure-u-sm-20-24,.pure-u-sm-21-24,.pure-u-sm-22-24,.pure-u-sm-23-24,.pure-u-sm-24-24,.pure-u-sm-3-24,.pure-u-sm-3-4,.pure-u-sm-3-5,.pure-u-sm-3-8,.pure-u-sm-4-24,.pure-u-sm-4-5,.pure-u-sm-5-12,.pure-u-sm-5-24,.pure-u-sm-5-5,.pure-u-sm-5-6,.pure-u-sm-5-8,.pure-u-sm-6-24,.pure-u-sm-7-12,.pure-u-sm-7-24,.pure-u-sm-7-8,.pure-u-sm-8-24,.pure-u-sm-9-24{display:inline-block;zoom:1;letter-spacing:normal;word-spacing:normal;vertical-align:top;text-rendering:auto}.pure-u-sm-1-24{width:4.1667%}.pure-u-sm-1-12,.pure-u-sm-2-24{width:8.3333%}.pure-u-sm-1-8,.pure-u-sm-3-24{width:12.5%}.pure-u-sm-1-6,.pure-u-sm-4-24{width:16.6667%}.pure-u-sm-1-5{width:20%}.pure-u-sm-5-24{width:20.8333%}.pure-u-sm-1-4,.pure-u-sm-6-24{width:25%}.pure-u-sm-7-24{width:29.1667%}.pure-u-sm-1-3,.pure-u-sm-8-24{width:33.3333%}.pure-u-sm-3-8,.pure-u-sm-9-24{width:37.5%}.pure-u-sm-2-5{width:40%}.pure-u-sm-10-24,.pure-u-sm-5-12{width:41.6667%}.pure-u-sm-11-24{width:45.8333%}.pure-u-sm-1-2,.pure-u-sm-12-24{width:50%}.pure-u-sm-13-24{width:54.1667%}.pure-u-sm-14-24,.pure-u-sm-7-12{width:58.3333%}.pure-u-sm-3-5{width:60%}.pure-u-sm-15-24,.pure-u-sm-5-8{width:62.5%}.pure-u-sm-16-24,.pure-u-sm-2-3{width:66.6667%}.pure-u-sm-17-24{width:70.8333%}.pure-u-sm-18-24,.pure-u-sm-3-4{width:75%}.pure-u-sm-19-24{width:79.1667%}.pure-u-sm-4-5{width:80%}.pure-u-sm-20-24,.pure-u-sm-5-6{width:83.3333%}.pure-u-sm-21-24,.pure-u-sm-7-8{width:87.5%}.pure-u-sm-11-12,.pure-u-sm-22-24{width:91.6667%}.pure-u-sm-23-24{width:95.8333%}.pure-u-sm-1,.pure-u-sm-1-1,.pure-u-sm-24-24,.pure-u-sm-5-5{width:100%}}@media screen and (min-width:48em){.pure-u-md-1,.pure-u-md-1-1,.pure-u-md-1-12,.pure-u-md-1-2,.pure-u-md-1-24,.pure-u-md-1-3,.pure-u-md-1-4,.pure-u-md-1-5,.pure-u-md-1-6,.pure-u-md-1-8,.pure-u-md-10-24,.pure-u-md-11-12,.pure-u-md-11-24,.pure-u-md-12-24,.pure-u-md-13-24,.pure-u-md-14-24,.pure-u-md-15-24,.pure-u-md-16-24,.pure-u-md-17-24,.pure-u-md-18-24,.pure-u-md-19-24,.pure-u-md-2-24,.pure-u-md-2-3,.pure-u-md-2-5,.pure-u-md-20-24,.pure-u-md-21-24,.pure-u-md-22-24,.pure-u-md-23-24,.pure-u-md-24-24,.pure-u-md-3-24,.pure-u-md-3-4,.pure-u-md-3-5,.pure-u-md-3-8,.pure-u-md-4-24,.pure-u-md-4-5,.pure-u-md-5-12,.pure-u-md-5-24,.pure-u-md-5-5,.pure-u-md-5-6,.pure-u-md-5-8,.pure-u-md-6-24,.pure-u-md-7-12,.pure-u-md-7-24,.pure-u-md-7-8,.pure-u-md-8-24,.pure-u-md-9-24{display:inline-block;zoom:1;letter-spacing:normal;word-spacing:normal;vertical-align:top;text-rendering:auto}.pure-u-md-1-24{width:4.1667%}.pure-u-md-1-12,.pure-u-md-2-24{width:8.3333%}.pure-u-md-1-8,.pure-u-md-3-24{width:12.5%}.pure-u-md-1-6,.pure-u-md-4-24{width:16.6667%}.pure-u-md-1-5{width:20%}.pure-u-md-5-24{width:20.8333%}.pure-u-md-1-4,.pure-u-md-6-24{width:25%}.pure-u-md-7-24{width:29.1667%}.pure-u-md-1-3,.pure-u-md-8-24{width:33.3333%}.pure-u-md-3-8,.pure-u-md-9-24{width:37.5%}.pure-u-md-2-5{width:40%}.pure-u-md-10-24,.pure-u-md-5-12{width:41.6667%}.pure-u-md-11-24{width:45.8333%}.pure-u-md-1-2,.pure-u-md-12-24{width:50%}.pure-u-md-13-24{width:54.1667%}.pure-u-md-14-24,.pure-u-md-7-12{width:58.3333%}.pure-u-md-3-5{width:60%}.pure-u-md-15-24,.pure-u-md-5-8{width:62.5%}.pure-u-md-16-24,.pure-u-md-2-3{width:66.6667%}.pure-u-md-17-24{width:70.8333%}.pure-u-md-18-24,.pure-u-md-3-4{width:75%}.pure-u-md-19-24{width:79.1667%}.pure-u-md-4-5{width:80%}.pure-u-md-20-24,.pure-u-md-5-6{width:83.3333%}.pure-u-md-21-24,.pure-u-md-7-8{width:87.5%}.pure-u-md-11-12,.pure-u-md-22-24{width:91.6667%}.pure-u-md-23-24{width:95.8333%}.pure-u-md-1,.pure-u-md-1-1,.pure-u-md-24-24,.pure-u-md-5-5{width:100%}}@media screen and (min-width:64em){.pure-u-lg-1,.pure-u-lg-1-1,.pure-u-lg-1-12,.pure-u-lg-1-2,.pure-u-lg-1-24,.pure-u-lg-1-3,.pure-u-lg-1-4,.pure-u-lg-1-5,.pure-u-lg-1-6,.pure-u-lg-1-8,.pure-u-lg-10-24,.pure-u-lg-11-12,.pure-u-lg-11-24,.pure-u-lg-12-24,.pure-u-lg-13-24,.pure-u-lg-14-24,.pure-u-lg-15-24,.pure-u-lg-16-24,.pure-u-lg-17-24,.pure-u-lg-18-24,.pure-u-lg-19-24,.pure-u-lg-2-24,.pure-u-lg-2-3,.pure-u-lg-2-5,.pure-u-lg-20-24,.pure-u-lg-21-24,.pure-u-lg-22-24,.pure-u-lg-23-24,.pure-u-lg-24-24,.pure-u-lg-3-24,.pure-u-lg-3-4,.pure-u-lg-3-5,.pure-u-lg-3-8,.pure-u-lg-4-24,.pure-u-lg-4-5,.pure-u-lg-5-12,.pure-u-lg-5-24,.pure-u-lg-5-5,.pure-u-lg-5-6,.pure-u-lg-5-8,.pure-u-lg-6-24,.pure-u-lg-7-12,.pure-u-lg-7-24,.pure-u-lg-7-8,.pure-u-lg-8-24,.pure-u-lg-9-24{display:inline-block;zoom:1;letter-spacing:normal;word-spacing:normal;vertical-align:top;text-rendering:auto}.pure-u-lg-1-24{width:4.1667%}.pure-u-lg-1-12,.pure-u-lg-2-24{width:8.3333%}.pure-u-lg-1-8,.pure-u-lg-3-24{width:12.5%}.pure-u-lg-1-6,.pure-u-lg-4-24{width:16.6667%}.pure-u-lg-1-5{width:20%}.pure-u-lg-5-24{width:20.8333%}.pure-u-lg-1-4,.pure-u-lg-6-24{width:25%}.pure-u-lg-7-24{width:29.1667%}.pure-u-lg-1-3,.pure-u-lg-8-24{width:33.3333%}.pure-u-lg-3-8,.pure-u-lg-9-24{width:37.5%}.pure-u-lg-2-5{width:40%}.pure-u-lg-10-24,.pure-u-lg-5-12{width:41.6667%}.pure-u-lg-11-24{width:45.8333%}.pure-u-lg-1-2,.pure-u-lg-12-24{width:50%}.pure-u-lg-13-24{width:54.1667%}.pure-u-lg-14-24,.pure-u-lg-7-12{width:58.3333%}.pure-u-lg-3-5{width:60%}.pure-u-lg-15-24,.pure-u-lg-5-8{width:62.5%}.pure-u-lg-16-24,.pure-u-lg-2-3{width:66.6667%}.pure-u-lg-17-24{width:70.8333%}.pure-u-lg-18-24,.pure-u-lg-3-4{width:75%}.pure-u-lg-19-24{width:79.1667%}.pure-u-lg-4-5{width:80%}.pure-u-lg-20-24,.pure-u-lg-5-6{width:83.3333%}.pure-u-lg-21-24,.pure-u-lg-7-8{width:87.5%}.pure-u-lg-11-12,.pure-u-lg-22-24{width:91.6667%}.pure-u-lg-23-24{width:95.8333%}.pure-u-lg-1,.pure-u-lg-1-1,.pure-u-lg-24-24,.pure-u-lg-5-5{width:100%}}@media screen and (min-width:80em){.pure-u-xl-1,.pure-u-xl-1-1,.pure-u-xl-1-12,.pure-u-xl-1-2,.pure-u-xl-1-24,.pure-u-xl-1-3,.pure-u-xl-1-4,.pure-u-xl-1-5,.pure-u-xl-1-6,.pure-u-xl-1-8,.pure-u-xl-10-24,.pure-u-xl-11-12,.pure-u-xl-11-24,.pure-u-xl-12-24,.pure-u-xl-13-24,.pure-u-xl-14-24,.pure-u-xl-15-24,.pure-u-xl-16-24,.pure-u-xl-17-24,.pure-u-xl-18-24,.pure-u-xl-19-24,.pure-u-xl-2-24,.pure-u-xl-2-3,.pure-u-xl-2-5,.pure-u-xl-20-24,.pure-u-xl-21-24,.pure-u-xl-22-24,.pure-u-xl-23-24,.pure-u-xl-24-24,.pure-u-xl-3-24,.pure-u-xl-3-4,.pure-u-xl-3-5,.pure-u-xl-3-8,.pure-u-xl-4-24,.pure-u-xl-4-5,.pure-u-xl-5-12,.pure-u-xl-5-24,.pure-u-xl-5-5,.pure-u-xl-5-6,.pure-u-xl-5-8,.pure-u-xl-6-24,.pure-u-xl-7-12,.pure-u-xl-7-24,.pure-u-xl-7-8,.pure-u-xl-8-24,.pure-u-xl-9-24{display:inline-block;zoom:1;letter-spacing:normal;word-spacing:normal;vertical-align:top;text-rendering:auto}.pure-u-xl-1-24{width:4.1667%}.pure-u-xl-1-12,.pure-u-xl-2-24{width:8.3333%}.pure-u-xl-1-8,.pure-u-xl-3-24{width:12.5%}.pure-u-xl-1-6,.pure-u-xl-4-24{width:16.6667%}.pure-u-xl-1-5{width:20%}.pure-u-xl-5-24{width:20.8333%}.pure-u-xl-1-4,.pure-u-xl-6-24{width:25%}.pure-u-xl-7-24{width:29.1667%}.pure-u-xl-1-3,.pure-u-xl-8-24{width:33.3333%}.pure-u-xl-3-8,.pure-u-xl-9-24{width:37.5%}.pure-u-xl-2-5{width:40%}.pure-u-xl-10-24,.pure-u-xl-5-12{width:41.6667%}.pure-u-xl-11-24{width:45.8333%}.pure-u-xl-1-2,.pure-u-xl-12-24{width:50%}.pure-u-xl-13-24{width:54.1667%}.pure-u-xl-14-24,.pure-u-xl-7-12{width:58.3333%}.pure-u-xl-3-5{width:60%}.pure-u-xl-15-24,.pure-u-xl-5-8{width:62.5%}.pure-u-xl-16-24,.pure-u-xl-2-3{width:66.6667%}.pure-u-xl-17-24{width:70.8333%}.pure-u-xl-18-24,.pure-u-xl-3-4{width:75%}.pure-u-xl-19-24{width:79.1667%}.pure-u-xl-4-5{width:80%}.pure-u-xl-20-24,.pure-u-xl-5-6{width:83.3333%}.pure-u-xl-21-24,.pure-u-xl-7-8{width:87.5%}.pure-u-xl-11-12,.pure-u-xl-22-24{width:91.6667%}.pure-u-xl-23-24{width:95.8333%}.pure-u-xl-1,.pure-u-xl-1-1,.pure-u-xl-24-24,.pure-u-xl-5-5{width:100%}}
-  </style>
-  
 
   
-  <style type="text/css" media="screen">
-    html {
-	min-height: 100%;
-	width: 100%;
-	position: relative;
-}
-
-body {
-	background-color: rgb(252, 252, 252);
-	color: #484848;
-}
-
-a {
-	text-decoration: none;
-}
-
-.nav-menu {
-	margin-top: 5px;
-	padding-bottom: 5px;
-	border-bottom: 1px solid #e3e3e3;
-}
-
-.pure-menu-heading {
-	text-transform: none;
-	font-size: large;
-}
-
-.header {
-	text-align: left;
-	color: #484848;
-	margin-bottom: .5em;
-}
-
-.header ul li {
-	height: auto;
-}
-
-.header ul li a {
-	font-weight: bold;
-	color: #484848;
-	font-family: "Source Sans Pro", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
-
-.header {
-	font-weight: bold;
-	color: #484848;
-	font-family: "Source Sans Pro", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
-
-.site-title {
-	color: #484848;
-	text-transform: none;
-	font-weight: normal;
-	font-family: "Source Sans Pro", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
-
-.pull-right {
-	float: right;
-}
-
-.posts-name {
-	text-transform: capitalize;
-	font-weight: bold;
-	padding-left: 1em;
-	margin-top: 1em;
-	font-family: "Source Sans Pro", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
-
-.posts {
-	font-family: verdana, arial, helvetica, sans-serif;
-	list-style-type: none;
-	padding-left: 1em;
-}
-
-.posts li p {
-	margin-top: 0;
-}
-
-.posts li {
-	margin-bottom: 1em;
-}
-
-.posts li > a {
-	color: #369;
-	text-decoration: none;
-}
-
-.post-list {
-	font-size: large;
-}
-
-.footnote {
-	font-family: verdana, arial, helvetica, sans-serif;
-	color: #575757;
-	font-size: 0.75em;
-	margin-bottom: 0;
-}
-
-.footnote a {
-	color: #575757;
-}
-
-.footnote a:hover {
-	text-decoration: underline;
-	color: #369;
-}
-
-.footer {
-	position: absolute;
-	z-index: 2;
-	height: auto;
-	width: 100%;
-	bottom: 0;
-}
-
-.footer-content {
-	border-top: 1px solid #e3e3e3;
-	font-size: 80%;
-	color: #bbb;
-}
-
-.footer-content a {
-	color: #575757;
-}
-
-.footer-content ul {
-	height: auto;
-	margin-top: 0;
-	margin-bottom: 0;
-	display: inline-block;
-	padding-left: 0;
-}
-
-#gototop-btn {
-	display: inline-block;
-}
-
-#foot-name {
-	color: #484848;
-	text-transform: none;
-}
-
-#foot-copyright {
-	padding-left: 1em;
-	padding-bottom: 0.5em;
-	margin: 0;
-}
-
-.post {
-	font-family: proxima-nova, "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
-	color: #484848;
-	letter-spacing: normal;
-	padding-left: .5em;
-}
-
-.post h1, h2, h3, h4, h5, h6 {
-	font-weight: bold;
-	letter-spacing: normal;
-}
-
-.post-content {
-	z-index: 9;
-	overflow: auto;
-	padding: 0;
-	padding-bottom: 3em;
-	font-size: 16px;
-	line-height: 1.4;
-}
-
-.post-content img {
-	max-width: 100%;
-	height: auto;
-}
-
-.post-content pre {
-	padding: 0.5em;
-}
-
-.post a {
-	color: #c05b4d;
-	text-decoration: none;
-}
-
-.post a:hover {
-	color: #a5473a;
-	text-decoration: underline;
-}
-
-.post h1 {
-	font-size: 28px;
-}
-
-.post h2 {
-	font-size: 25px;
-}
-
-.post h3 {
-	font-size: 23px;
-}
-
-.post h4 {
-	font-size: 21px;
-}
-
-.post h5 {
-	font-size: 19px;
-}
-
-.post h6 {
-	font-size: 18px;
-}
-
-.post-title {
-	margin-top: 0;
-	margin-bottom: 2em;
-}
-
-.post-title h1 {
-	font-weight: bold;
-	font-size: 39px;
-	line-height: 40px;
-	margin-top: 0;
-	margin-bottom: 0;
-}
-
-@media screen and (max-width: 767px) {
-	.desktop {
-		display: none;
-	}
-
-	.mobile {
-		display: block;
-	}
-
-	#toggle-btn {
-		display: inline-block;
-		float: right;
-		padding: .5em 1em;
-		text-decoration: none;
-		color: #484848;
-		font-weight: bold;
-	}
-
-	#toggle-content li {
-		clear: both;
-		height: auto;
-		background-color: rgb(249, 249, 249);
-	}
-
-	#toggle-home {
-		display: inline-block;
-	}
-}
-
-@media screen and (min-width: 768px) {
-	.mobile {
-		display: none;
-	}
-
-	.desktop {
-		display: block;
-	}
-}
-
-  </style>
-
+  <link rel="shortcut icon"
   
-  <link rel="shortcut icon" 
-   
     href="https://briones.io/img/favicon.ico"
   
   type="image/x-icon">
 
   
   
-  <link href="https://briones.io/posts/index.xml" rel="alternate" type="application/rss+xml" title="christian&#39;s blog. Feed" />
+  <link rel="stylesheet" href="https://briones.io/main.d314fff96d8be17a1f9aed198acca18c8a28b55ca52c533ab12ccc60f63d9021.css" integrity="sha256-0xT/&#43;W2L4Xofmu0ZisyhjIootVylLFM6sSzMYPY9kCE=">
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700">
+
+  
+  
+  <link href="https://briones.io/posts/index.xml" rel="alternate" type="application/rss+xml" title="christian&#39;s blog Feed" />
   
 
   <meta name="generator" content="Hugo 0.54.0" />
-
-  
-  
 </head>
 <body>
 
-<div class="header pure-g">
-    <div class="pure-u-1-24 pure-u-md-5-24"></div>
-    <div class="pure-u-11-12 pure-u-md-7-12">
-        <div class="desktop pure-menu pure-menu-horizontal nav-menu">
-            
-            <a href="https://briones.io/" class="site-title pure-menu-heading">christian&#39;s blog.</a>
-            <ul class="pure-menu-list pull-right">
-				
-                
-				
-                <li class="pure-menu-item">
-                    <a href="https://briones.io/about/" class="pure-menu-link">About</a>
-                </li>
-            </ul>
-        </div>
-        <div class="mobile pure-menu nav-menu">
-            <a href="/" class="site-title pure-menu-heading" id="toggle-home">christian&#39;s blog.</a>
-            <a href="#" id="toggle-btn">&#9776;</a>
-            <ul class="pure-menu-list" id="toggle-content" style="display:none;">
-                
-				
-                
-				
-                <li class="pure-menu-item">
-                    <a href="https://briones.io/about" class="pure-menu-link">About</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-    <div class="pure-u-1-24 pure-u-md-5-24"></div>
-</div>
 
-
-
-<div class="pure-g">
-  <div class="pure-u-1-24 pure-u-md-5-24"></div>
-  <div class="pure-u-11-12 pure-u-md-7-12">
-    <div class="post-content">
-      <p class="posts-name">Posts:</p>
-
-      <ul class="posts">
-        
-        
-        
-        <li>
-          
-          <a class="post-list" href="https://briones.io/posts/blog-take-2/">Blog - Take Two</a>
-
-          <p class="footnote">
-            <time datetime="2019-03-24 18:13:29 -0700 PDT">
-              
-                2019-03-24
-              
-            </time>
-          </p>
-        </li>
-        
-        
-        
-        <li>
-          
-          <a class="post-list" href="https://briones.io/posts/2017-04-02-on-ducktyping/">On Duck-Typing</a>
-
-          <p class="footnote">
-            <time datetime="2017-04-02 22:01:49 &#43;0000 UTC">
-              
-                2017-04-02
-              
-            </time>
-          </p>
-        </li>
-        
-        
-        
-        <li>
-          
-          <a class="post-list" href="https://briones.io/posts/2016-10-08-getting-lazy-with-erlang/">Getting Lazy with Erlang</a>
-
-          <p class="footnote">
-            <time datetime="2016-10-08 21:32:57 &#43;0000 UTC">
-              
-                2016-10-08
-              
-            </time>
-          </p>
-        </li>
-        
-        
-      </ul>
-    </div>
+<nav class="header-nav">
+  
+  <div>
+    <a href="https://briones.io/">christian&#39;s blog</a>
+    <div class="title-highlight"></div>
   </div>
-  <div class="pure-u-1-24 pure-u-md-5-24"></div>
-</div>
+  <ul class="nav-list">
+    <li>
+      <a href="https://briones.io/about/">About</a>
+    </li>
+  </ul>
+</nav>
 
-<div class="footer pure-g">
-  <div class="pure-u-1-24 pure-u-md-5-24"></div>
-  <div class="pure-u-11-12 pure-u-md-7-12">
-    <div class="footer-content">
-      <div class="pure-menu pure-menu-horizontal">
-        <ul>
-          
-          <li class="pure-menu-item" id="foot-name">© Christian Briones</li>
-          
-
-          
-          <li class="pure-menu-item">
-            <a href="mailto:christian@briones.io" class="pure-menu-link">Email</a>
-          </li>
-          
-
-          
-          <li class="pure-menu-item">
-            <a href="https://github.com/cwbriones" class="pure-menu-link">GitHub</a>
-          </li>
-          
-
-          
-          <li class="pure-menu-item">
-            <a href="https://twitter.com/cwbriones" class="pure-menu-link">Twitter</a>
-          </li>
-          
-
-          
-
-        </ul>
-        <a href="#" class="pure-menu-link pull-right" id="gototop-btn">↑↑</a>
-        
-        <a href="https://briones.io/posts/index.xml" class="pure-menu-link pull-right">RSS</a>
-        
-      </div>
+<div>
+  <header>
+    <h1>
       
-    </div>
+        posts.
+      
+    </h1>
+  </header>
+  <div>
+    
   </div>
-  <div class="pure-u-1-24 pure-u-md-5-24"></div>
+  <ul class="post-list">
+  
+  
+    
+    <li>
+      <h2>
+        <a href="https://briones.io/posts/blog-take-2/">
+          Blog - Take Two
+        </a>
+      </h2>
+      
+      <p><strong>or:</strong> how I stopped worrying and learned to love the blog.</p>
+      
+      <div>
+        <time datetime="2019-03-24 18:13:29 -0700 PDT">
+          24 Mar 2019
+        </time>
+        <ul class="tags">
+        
+          
+          <li class="tag">
+            <a href="https://briones.io/tags/meta">meta</a>
+          </li>
+          
+        
+        </ul>
+      </div>
+    </li>
+    
+  
+    
+    <li>
+      <h2>
+        <a href="https://briones.io/posts/2017-04-02-on-ducktyping/">
+          On Duck-Typing
+        </a>
+      </h2>
+      
+      <div>
+        <time datetime="2017-04-02 22:01:49 &#43;0000 UTC">
+          02 Apr 2017
+        </time>
+        <ul class="tags">
+        
+          
+          <li class="tag">
+            <a href="https://briones.io/tags/software">software</a>
+          </li>
+          
+        
+        </ul>
+      </div>
+    </li>
+    
+  
+    
+    <li>
+      <h2>
+        <a href="https://briones.io/posts/2016-10-08-getting-lazy-with-erlang/">
+          Getting Lazy with Erlang
+        </a>
+      </h2>
+      
+      <div>
+        <time datetime="2016-10-08 21:32:57 &#43;0000 UTC">
+          08 Oct 2016
+        </time>
+        <ul class="tags">
+        
+          
+          <li class="tag">
+            <a href="https://briones.io/tags/software">software</a>
+          </li>
+          
+        
+        </ul>
+      </div>
+    </li>
+    
+  
+  </ul>
 </div>
 
-<script type="text/javascript">
-  go();
-  window.addEventListener('resize', go);
-  function go(){
-    var d=document.querySelector(".desktop")
-    if(document.documentElement.clientWidth > 768) {
-      d.style.display="";
-    } else {
-      d.style.display="none";
-    }
-  }
-</script>
-<script type="text/javascript">
-  var a=document.querySelector("#toggle-btn"),b=document.querySelector("#toggle-content");a.addEventListener("click",function(){""==b.style.display?(b.style.display="none",a.innerHTML="☰"):(b.style.display="",a.innerHTML="X")});</script>
+<hr>
+<footer>
+  <ul class="footer-nav">
+    <li>
+    <p>
+    
+    © Christian Briones – 
+    
+    Powered by <a href="https://gohugo.io/">Hugo</a> + <a href="https://pages.github.com/">Github Pages</a></p>
+    </li>
+    
+    <li>
+      <a href="mailto:christian@briones.io">
+        <span class="fontawesome" ><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="envelope" class="svg-inline--fa fa-envelope fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" fill="currentColor" d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z"></path></svg>
+</span>
 
+      </a>
+    </li>
+    
 
+    
+    <li>
+      <a href="https://github.com/cwbriones">
+        <span class="fontawesome" ><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+</span>
+
+      </a>
+    </li>
+    
+    
+    <li>
+      <a href="https://github.com/cwbriones">
+        <span class="fontawesome" ><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+</span>
+
+      </a>
+    </li>
+    
+  </ul>
+</footer>
 </body>
-</html>
 

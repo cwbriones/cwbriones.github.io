@@ -16,7 +16,7 @@
 
   
   
-  <link rel="stylesheet" href="https://briones.io/main.d314fff96d8be17a1f9aed198acca18c8a28b55ca52c533ab12ccc60f63d9021.css" integrity="sha256-0xT/&#43;W2L4Xofmu0ZisyhjIootVylLFM6sSzMYPY9kCE=">
+  <link rel="stylesheet" href="https://briones.io/main.fc2c5777a9b3d114e1a9ff4544501ce99d0442a28aca3302d06f5d72a75b1264.css" integrity="sha256-/CxXd6mz0RThqf9FRFAc6Z0EQqKKyjMC0G9dcqdbEmQ=">
 
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700">
 
@@ -95,17 +95,14 @@ get something like what we have in Haskell?</p>
 <h2 id="funs-as-contexts">Funs as contexts</h2>
 
 <p>If we take a quick look around, it&rsquo;s apparent that functions themselves are lazy by nature - they let you pass around blocks of code as data. Wrapping a value in a lambda only evaluates that value when the lambda is called:</p>
-
-<pre><code>1&gt; io:format(&quot;Hey!\n&quot;).
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-plain" data-lang="plain">1&gt; io:format(&#34;Hey!\n&#34;).
 Hey!
 ok
-2&gt; F = fun() -&gt; io:format(&quot;Hey!&quot;\n) end.
+2&gt; F = fun() -&gt; io:format(&#34;Hey!&#34;\n) end.
 #Fun&lt;erl_eval.20.50752066&gt;
 3&gt; F().
 Hey!
-ok
-</code></pre>
-
+ok</code></pre></div>
 <p>We can use this to build our lazy lists in Erlang, we&rsquo;ll call them <strong><em>streams</em></strong>. <sup class="footnote-ref" id="fnref:streams"><a href="#fn:streams">1</a></sup></p>
 
 <p>You can think of streams as specific types of functions. They need to return the next value in the stream, if any, otherwise signal that we&rsquo;ve reached the end. This leads to a particularly elegant type definition:</p>
@@ -127,8 +124,7 @@ ok
 </span><span style="">    {N, </span><span style="color:#d55537;font-weight:bold">naturals</span>(<span style="color:#bb60d5">N</span> <span style="color:#666">+</span> <span style="color:#40a070">1</span>)}
   <span style="color:#007020;font-weight:bold">end</span>.</code></pre></div>
 <p>Easy! The stream of natural numbers starting at <code>N</code> is followed by the stream starting at <code>N + 1</code>. Notice that our <code>naturals/1</code> stream is <em>infinite</em>, as it unconditionally refers to itself. Since our recursive call is wrapped up neatly in a <code>fun</code>, we can express this definition without fear of an infinite loop. We can check that it works as expected in the repl.</p>
-
-<pre><code>1&gt; c(streams).
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-plain" data-lang="plain">1&gt; c(streams).
 {ok, streams}
 2&gt; Ns = naturals().
 #Fun&lt;streams.2.68943458&gt;
@@ -137,9 +133,7 @@ ok
 4&gt; {_, Ns3} = yield(Ns2).
 {1, #Fun&lt;streams.2.68943458&gt;}
 5&gt; {_, Ns4} = yield(Ns3).
-{2, #Fun&lt;streams.2.68943458&gt;}
-</code></pre>
-
+{2, #Fun&lt;streams.2.68943458&gt;}</code></pre></div>
 <p>As you can see on the right-hand side, we are indeed getting back <code>0, 1, 2</code> as we repeatedly call <code>yield</code>.</p>
 
 <h2 id="stream-transformers">Stream Transformers</h2>
@@ -183,11 +177,8 @@ ok
     halt -<span style="">&gt; </span><span style="color:#d55537;font-weight:bold">lists</span>:<span style="color:#06287e">reverse</span>(<span style="color:#bb60d5">Acc</span>);
   <span style="color:#007020;font-weight:bold">end</span>.</code></pre></div>
 <p>However this alone isn&rsquo;t enough to perform our computation. Up until now our stream has been infinite. If we called <code>to_list</code> on our stream now, we&rsquo;d continue <code>yield</code>ing elements until we ran out of memory.</p>
-
-<pre><code>1&gt; streams:to_list(streams:naturals()).
-(Hangs forever...)
-</code></pre>
-
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-plain" data-lang="plain">1&gt; streams:to_list(streams:naturals()).
+(Hangs forever...)</code></pre></div>
 <p>Let&rsquo;s handle this by defining a way of limiting our stream to a finite length:</p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-erlang" data-lang="erlang">-<span style="color:#d55537;font-weight:bold">spec</span> <span style="color:#06287e">take</span>(<span style="color:#06287e">integer</span>(), <span style="color:#06287e">stream</span>(<span style="color:#bb60d5">A</span>)) -<span style="">&gt; </span><span style="color:#d55537;font-weight:bold">stream</span>(<span style="color:#bb60d5">A</span>).
 <span style="color:#06287e">take</span>(<span style="color:#bb60d5">N</span>, <span style="color:#bb60d5">Stream</span>) <span style="color:#007020;font-weight:bold">when</span> <span style="color:#bb60d5">N</span> <span style="color:#666">&gt;=</span> <span style="color:#40a070">0</span> -<span style="">&gt;

@@ -66,15 +66,5 @@ class MyDBPool(object): &amp;#34;&amp;#34;&amp;#34; A database connection pool. 
 For the uninitiated, Haskell has a list data type that is lazily evaluated. That is, elements of the list are only evaluated if they&amp;rsquo;re needed to continue the computation. This allows you to do all sorts of neat things like create an infinite list of integers or build a list that refers to itself.</description>
     </item>
     
-    <item>
-      <title>Not Found</title>
-      <link>https://briones.io/404/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <author>christian@briones.io (Christian Briones)</author>
-      <guid>https://briones.io/404/</guid>
-      <description>It looks like that page was moved or doesn&amp;rsquo;t exist.
-Fortunately, there are other things to read back on my home page.</description>
-    </item>
-    
   </channel>
 </rss>

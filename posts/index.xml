@@ -8,21 +8,10 @@
     <language>en-us</language>
     <managingEditor>christian@briones.io (Christian Briones)</managingEditor>
     <webMaster>christian@briones.io (Christian Briones)</webMaster>
-    <lastBuildDate>Thu, 28 Mar 2019 20:21:51 -0700</lastBuildDate>
+    <lastBuildDate>Sun, 24 Mar 2019 18:13:29 -0700</lastBuildDate>
     
 	<atom:link href="https://briones.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>From Types to FizzBuzz</title>
-      <link>https://briones.io/posts/2019-03-28-from-types-to-fizzbuzz/</link>
-      <pubDate>Thu, 28 Mar 2019 20:21:51 -0700</pubDate>
-      <author>christian@briones.io (Christian Briones)</author>
-      <guid>https://briones.io/posts/2019-03-28-from-types-to-fizzbuzz/</guid>
-      <description>Introduction  Fizzbuzz is a famous programming interview question whose description is actually fairly straightforward:
- For each number from N=1 to N=100, if N is&amp;hellip;
- &amp;hellip;disible by 3, output &amp;ldquo;Fizz&amp;rdquo;. &amp;hellip;divisible by 5, output &amp;ldquo;Buzz&amp;rdquo;. &amp;hellip;divisible by both 3 and 5, output &amp;ldquo;FizzBuzz&amp;rdquo;. &amp;hellip;otherwise, output the number itself.   A straighforward problem often leads to a straighforward solution - but of course, we&amp;rsquo;re not straightforward. That&amp;rsquo;d be too simple, that&amp;rsquo;d be – boring.</description>
-    </item>
     
     <item>
       <title>Blog - Take Two</title>

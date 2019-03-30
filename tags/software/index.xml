@@ -27,7 +27,7 @@ class MyDBPool(object): &amp;#34;&amp;#34;&amp;#34; A database connection pool. 
     <item>
       <title>Getting Lazy with Erlang</title>
       <link>https://briones.io/posts/2016-10-08-getting-lazy-with-erlang/</link>
-      <pubDate>Sat, 08 Oct 2016 21:32:57 +0000</pubDate>
+      <pubDate>Sat, 08 Oct 2016 21:32:57 -0700</pubDate>
       <author>christian@briones.io (Christian Briones)</author>
       <guid>https://briones.io/posts/2016-10-08-getting-lazy-with-erlang/</guid>
       <description>I&amp;rsquo;ve recently been playing around with Haskell again, and not only am I impressed by how natural recursive structures seem within the language - the ease with which you define them is even more impressive.

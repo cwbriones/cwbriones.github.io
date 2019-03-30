@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>christian&#39;s blog</title>
+    <title>Recent Posts on christian&#39;s blog</title>
     <link>https://briones.io/</link>
-    <description>Recent content on christian&#39;s blog</description>
+    <description>Recent content in Recent Posts on christian&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>christian@briones.io (Christian Briones)</managingEditor>
     <webMaster>christian@briones.io (Christian Briones)</webMaster>
-    <lastBuildDate>Sun, 24 Mar 2019 18:13:29 -0700</lastBuildDate>
+    <lastBuildDate>Fri, 29 Mar 2019 19:57:00 -0700</lastBuildDate>
     
 	<atom:link href="https://briones.io/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Blog - Take Two</title>
-      <link>https://briones.io/posts/blog-take-2/</link>
+      <link>https://briones.io/posts/2019-03-24-blog-take-two/</link>
       <pubDate>Sun, 24 Mar 2019 18:13:29 -0700</pubDate>
       <author>christian@briones.io (Christian Briones)</author>
-      <guid>https://briones.io/posts/blog-take-2/</guid>
+      <guid>https://briones.io/posts/2019-03-24-blog-take-two/</guid>
       <description>Two years have flown by and I haven&amp;rsquo;t been active on here at all. Hopefully that changes this year. I think my problem has been sitting on material, thinking that every post has to be a gem.
 We can&amp;rsquo;t all be wordsmiths.
 What this place should be is a dumping ground for my thoughts - well sculpted or otherwise. So look forward to a grab bag of my interests – I don&amp;rsquo;t want to pin this place down to any single facet just yet.</description>
@@ -49,7 +49,7 @@ class MyDBPool(object): &amp;#34;&amp;#34;&amp;#34; A database connection pool. 
     <item>
       <title>Getting Lazy with Erlang</title>
       <link>https://briones.io/posts/2016-10-08-getting-lazy-with-erlang/</link>
-      <pubDate>Sat, 08 Oct 2016 21:32:57 +0000</pubDate>
+      <pubDate>Sat, 08 Oct 2016 21:32:57 -0700</pubDate>
       <author>christian@briones.io (Christian Briones)</author>
       <guid>https://briones.io/posts/2016-10-08-getting-lazy-with-erlang/</guid>
       <description>I&amp;rsquo;ve recently been playing around with Haskell again, and not only am I impressed by how natural recursive structures seem within the language - the ease with which you define them is even more impressive.

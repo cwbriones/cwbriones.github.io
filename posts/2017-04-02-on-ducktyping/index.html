@@ -16,7 +16,7 @@
 
   
   
-  <link rel="stylesheet" href="https://briones.io/main.fc2c5777a9b3d114e1a9ff4544501ce99d0442a28aca3302d06f5d72a75b1264.css" integrity="sha256-/CxXd6mz0RThqf9FRFAc6Z0EQqKKyjMC0G9dcqdbEmQ=">
+  <link rel="stylesheet" href="https://briones.io/main.f11fb1ffd09678c145428ed5034667e4938fec01f8ceb6a1265bd82813164cce.css" integrity="sha256-8R&#43;x/9CWeMFFQo7VA0Zn5JOP7AH4zrahJlvYKBMWTM4=">
 
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700">
 
@@ -28,11 +28,11 @@
 <body>
 
 
-<nav class="header-nav">
+<nav class="site-nav">
   
-  <div>
+  <div id="sitename">
     <a href="https://briones.io/">christian&#39;s blog</a>
-    <div class="title-highlight"></div>
+    <div class="highlight"></div>
   </div>
   <ul class="nav-list">
     <li>
@@ -41,30 +41,33 @@
   </ul>
 </nav>
 
-<div>
-  <article class="post">
-    <header>
-      <h1>On Duck-Typing</h1>
-      <div class="post-meta">
-        
-          <time datetime="2017-04-02 22:01:49 &#43;0000 UTC">
-            02 Apr 2017
-          </time>
-        
-        
-        <ul class="tags">
-        
-          
-          <li class="tag">
-            <a href="https://briones.io/tags/software">software</a>
-          </li>
-          
-        
-        </ul>
-      </div>
-    </header>
-    <div class="post-content">
-      <p><strong>Note: The following is written with Python in mind, but the idea just as easily applies to something like JavaScript with a s/isinstance/instanceof/g, among other things.</strong></p>
+
+<main>
+
+
+
+<article class="post">
+  <header class="post-header">
+    <h1>On Duck-Typing</h1>
+    
+    <div class="post-meta">
+      <time datetime="2017-04-02 22:01:49 &#43;0000 UTC">
+        02 Apr 2017
+      </time>
+      <ul class="tags">
+  
+    <li class="tag">
+      <a href="https://briones.io/tags/software">software</a>
+    </li>
+  
+</ul>
+
+    </div>
+    
+  </header>
+  <div class="post-content">
+    
+    <p><strong>Note: The following is written with Python in mind, but the idea just as easily applies to something like JavaScript with a s/isinstance/instanceof/g, among other things.</strong></p>
 
 <p>Let&rsquo;s say you&rsquo;re writing a database pooling service <sup class="footnote-ref" id="fnref:1"><a href="#fn:1">1</a></sup> in Python, and have something like this:</p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007020;font-weight:bold">class</span> <span style="color:#0e84b5;font-weight:bold">MyDBPool</span>(<span style="color:#007020">object</span>):
@@ -137,21 +140,26 @@ fetch_user(db_pool, user_id)
 </ol>
 </div>
 
-      <a href="#" id="gototop-btn">↑↑</a>
+    
+    <div class="pull-right">
+      <a href="#">↑↑</a>
     </div>
-  </article>
-</div>
+    
+  </div>
+</article>
+
+
+</main>
 
 <hr>
-<footer>
-  <ul class="footer-nav">
-    <li>
-    <p>
-    
-    © Christian Briones – 
-    
-    Powered by <a href="https://gohugo.io/">Hugo</a> + <a href="https://pages.github.com/">Github Pages</a></p>
-    </li>
+<footer class="site-footer">
+  <p>
+  
+  © Christian Briones –
+  
+  Powered by <a href="https://gohugo.io/">Hugo</a> + <a href="https://pages.github.com/">Github Pages</a>
+  </p>
+  <ul>
     
     <li>
       <a href="mailto:christian@briones.io">

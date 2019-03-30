@@ -16,7 +16,7 @@
 
   
   
-  <link rel="stylesheet" href="https://briones.io/main.fc2c5777a9b3d114e1a9ff4544501ce99d0442a28aca3302d06f5d72a75b1264.css" integrity="sha256-/CxXd6mz0RThqf9FRFAc6Z0EQqKKyjMC0G9dcqdbEmQ=">
+  <link rel="stylesheet" href="https://briones.io/main.f11fb1ffd09678c145428ed5034667e4938fec01f8ceb6a1265bd82813164cce.css" integrity="sha256-8R&#43;x/9CWeMFFQo7VA0Zn5JOP7AH4zrahJlvYKBMWTM4=">
 
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700">
 
@@ -28,11 +28,11 @@
 <body>
 
 
-<nav class="header-nav">
+<nav class="site-nav">
   
-  <div>
+  <div id="sitename">
     <a href="https://briones.io/">christian&#39;s blog</a>
-    <div class="title-highlight"></div>
+    <div class="highlight"></div>
   </div>
   <ul class="nav-list">
     <li>
@@ -41,30 +41,35 @@
   </ul>
 </nav>
 
-<div>
-  <article class="post">
-    <header>
-      <h1>Getting Lazy with Erlang</h1>
-      <div class="post-meta">
-        
-          <time datetime="2016-10-08 21:32:57 &#43;0000 UTC">
-            08 Oct 2016
-          </time>
-        
-        
-        <ul class="tags">
-        
-          
-          <li class="tag">
-            <a href="https://briones.io/tags/software">software</a>
-          </li>
-          
-        
-        </ul>
-      </div>
-    </header>
-    <div class="post-content">
-      
+
+<main>
+
+
+
+<article class="post">
+  <header class="post-header">
+    <h1>Getting Lazy with Erlang</h1>
+    
+    <div class="post-meta">
+      <time datetime="2016-10-08 21:32:57 -0700 PDT">
+        08 Oct 2016
+      </time>
+      <ul class="tags">
+  
+    <li class="tag">
+      <a href="https://briones.io/tags/software">software</a>
+    </li>
+  
+</ul>
+
+    </div>
+    
+  </header>
+  <div class="post-content">
+    
+    <b>Updated: 28 Mar 2019</b>
+    
+    
 
 <p>I&rsquo;ve recently been playing around with Haskell again, and not only am I impressed by how natural recursive structures seem within the language - the ease with which you define them is even more impressive.</p>
 
@@ -92,7 +97,17 @@
 <p>We can&rsquo;t even express the original list of integers with erlang&rsquo;s built-in lists. So how can we
 get something like what we have in Haskell?</p>
 
-<h2 id="funs-as-contexts">Funs as contexts</h2>
+
+
+
+
+
+  <h2 id="funs-as-contexts">
+    <a href="#funs-as-contexts">Funs as Contexts</a>
+  </h2>
+
+
+
 
 <p>If we take a quick look around, it&rsquo;s apparent that functions themselves are lazy by nature - they let you pass around blocks of code as data. Wrapping a value in a lambda only evaluates that value when the lambda is called:</p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-plain" data-lang="plain">1&gt; io:format(&#34;Hey!\n&#34;).
@@ -109,7 +124,17 @@ ok</code></pre></div>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-erlang" data-lang="erlang">-<span style="color:#d55537;font-weight:bold">type</span> <span style="color:#06287e">stream</span>(<span style="color:#bb60d5">A</span>) :: <span style="color:#007020;font-weight:bold">fun</span>(() -<span style="">&gt; </span><span style="color:#d55537;font-weight:bold">halt</span> | {<span style="color:#bb60d5">A</span>, <span style="color:#06287e">stream</span>(<span style="color:#bb60d5">A</span>)}.</code></pre></div>
 <p>If the stream returns <code>halt</code>, we know we&rsquo;ve reached the end. Otherwise we get our next value along with a new stream for continuing iteration.</p>
 
-<h2 id="building-our-first-stream">Building our first stream</h2>
+
+
+
+
+
+  <h2 id="building-our-first-stream">
+    <a href="#building-our-first-stream">Building our first stream</a>
+  </h2>
+
+
+
 
 <p>First of all, let&rsquo;s wrap up actual function calls to our stream with the function `yield/1&rsquo;.</p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-erlang" data-lang="erlang">-<span style="color:#d55537;font-weight:bold">spec</span> <span style="color:#06287e">yield</span>(<span style="color:#bb60d5">Stream</span> :: <span style="color:#06287e">stream</span>(<span style="color:#bb60d5">A</span>)) -<span style="">&gt; </span><span style="color:#d55537;font-weight:bold">halt</span> | {<span style="color:#bb60d5">A</span>, <span style="color:#06287e">stream</span>(<span style="color:#bb60d5">A</span>)}.
@@ -136,7 +161,17 @@ ok</code></pre></div>
 {2, #Fun&lt;streams.2.68943458&gt;}</code></pre></div>
 <p>As you can see on the right-hand side, we are indeed getting back <code>0, 1, 2</code> as we repeatedly call <code>yield</code>.</p>
 
-<h2 id="stream-transformers">Stream Transformers</h2>
+
+
+
+
+
+  <h2 id="stream-transformers">
+    <a href="#stream-transformers">Stream Transformers</a>
+  </h2>
+
+
+
 
 <p>Now that we have our infinite stream of integers, we need to be able to transform this stream in a list-like fashion. Erlang provides higher-order functions such as <code>lists:map/2</code> and <code>lists:filter/2</code> to manipulate and transform its lists. We&rsquo;ll define the same for streams.</p>
 
@@ -165,7 +200,17 @@ ok</code></pre></div>
 
 <p>If it&rsquo;s false, however, we need to call <code>do_filter</code> which will evaluate <strong>immediately</strong>. This should be expected - after all, the whole point of lazy evaluation is to only perform computation when needed, and we need to continue to the next element.</p>
 
-<h2 id="forcing-evalution">Forcing evalution</h2>
+
+
+
+
+
+  <h2 id="forcing-evaluation">
+    <a href="#forcing-evaluation">Forcing Evaluation</a>
+  </h2>
+
+
+
 
 <p>Now that we can define and transform our stream, we need to be able to evaluate it. Otherwise it wouldn&rsquo;t serve much use, would it? We&rsquo;ll define a helper, <code>to_list/1</code> that repeated <code>yield</code>s elements into a list until we reach the end of the stream:</p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-erlang" data-lang="erlang">-<span style="color:#d55537;font-weight:bold">spec</span> <span style="color:#06287e">to_list</span>(<span style="color:#06287e">stream</span>(<span style="color:#bb60d5">A</span>)) -<span style="">&gt; </span><span style="color:#d55537;font-weight:bold">list</span>(<span style="color:#bb60d5">A</span>).
@@ -198,7 +243,17 @@ ok</code></pre></div>
 <span style="color:#bb60d5">Take10</span> <span style="color:#666">=</span> <span style="color:#0e84b5;font-weight:bold">streams</span>:<span style="color:#06287e">take</span>(<span style="color:#40a070">10</span>, <span style="color:#bb60d5">OddSquares</span>),
 <span style="color:#0e84b5;font-weight:bold">streams</span>:<span style="color:#06287e">to_list</span>(<span style="color:#bb60d5">Take10</span>).
 <span style="">%%</span> <span style="color:#666">&gt;</span> [<span style="color:#40a070">1</span>,<span style="color:#40a070">9</span>,<span style="color:#40a070">25</span>,<span style="color:#40a070">49</span>,<span style="color:#40a070">81</span>,<span style="color:#40a070">121</span>,<span style="color:#40a070">169</span>,<span style="color:#40a070">225</span>,<span style="color:#40a070">289</span>,<span style="color:#40a070">361</span>]</code></pre></div>
-<h2 id="yielding-from-lists">Yielding from lists</h2>
+
+
+
+
+
+  <h2 id="yielding-from-lists">
+    <a href="#yielding-from-lists">Yielding from Lists</a>
+  </h2>
+
+
+
 
 <p>As a bonus, we can easily add a case to <code>yield/1</code> that lets us use streams and lists interchangeably.</p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-erlang" data-lang="erlang">-<span style="color:#d55537;font-weight:bold">spec</span> <span style="color:#06287e">yield</span>(<span style="color:#bb60d5">Stream</span> :: <span style="color:#06287e">stream</span>(<span style="color:#bb60d5">A</span>)) -<span style="">&gt; </span><span style="color:#d55537;font-weight:bold">halt</span> | {<span style="color:#bb60d5">A</span>, <span style="color:#06287e">stream</span>(<span style="color:#bb60d5">A</span>)}.
@@ -207,7 +262,7 @@ ok</code></pre></div>
 <span style="color:#06287e">yield</span>([]) -<span style="">&gt; </span><span style="color:#d55537;font-weight:bold">halt</span>.</code></pre></div>
 <p>In this way, we can think of lists as their own type of stream. This is why we included the level of indirection with <code>yield</code>. It acts as a simple interface - by adding additional function heads we can extend the notion of a stream to any iterable structure. This is quite powerful, as it lets us mix-and-match these structures whenever we want. <sup class="footnote-ref" id="fnref:enumerable"><a href="#fn:enumerable">2</a></sup></p>
 
-<h2 id="until-next-time">Until next time</h2>
+<h2 id="until-next-time">Until next time&rdquo;</h2>
 
 <p>We&rsquo;ve seen that while infinite streams are certainly a useful tool to have as a first-class feature, they&rsquo;re easily expressible through the power of simple functions. There are more complex examples of stream transformers and combinators available, but I&rsquo;ll leave those for another time. If you&rsquo;re curious or want to play around with them right now, all of the above (and more!) is available <a href="https://github.com/cwbriones/streams">on my github</a>.</p>
 
@@ -224,21 +279,26 @@ ok</code></pre></div>
 </ol>
 </div>
 
-      <a href="#" id="gototop-btn">↑↑</a>
+    
+    <div class="pull-right">
+      <a href="#">↑↑</a>
     </div>
-  </article>
-</div>
+    
+  </div>
+</article>
+
+
+</main>
 
 <hr>
-<footer>
-  <ul class="footer-nav">
-    <li>
-    <p>
-    
-    © Christian Briones – 
-    
-    Powered by <a href="https://gohugo.io/">Hugo</a> + <a href="https://pages.github.com/">Github Pages</a></p>
-    </li>
+<footer class="site-footer">
+  <p>
+  
+  © Christian Briones –
+  
+  Powered by <a href="https://gohugo.io/">Hugo</a> + <a href="https://pages.github.com/">Github Pages</a>
+  </p>
+  <ul>
     
     <li>
       <a href="mailto:christian@briones.io">

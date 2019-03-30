@@ -3,7 +3,12 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://briones.io/posts/blog-take-2/</loc>
+    <loc>https://briones.io/</loc>
+    <lastmod>2019-03-29T19:57:00-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://briones.io/posts/2019-03-24-blog-take-two/</loc>
     <lastmod>2019-03-24T18:13:29-07:00</lastmod>
   </url>
   
@@ -19,12 +24,7 @@
   
   <url>
     <loc>https://briones.io/posts/2016-10-08-getting-lazy-with-erlang/</loc>
-    <lastmod>2016-10-08T21:32:57+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://briones.io/categories/</loc>
-    <priority>0</priority>
+    <lastmod>2019-03-28T12:00:00-07:00</lastmod>
   </url>
   
   <url>
@@ -47,12 +47,6 @@
   
   <url>
     <loc>https://briones.io/tags/</loc>
-    <lastmod>2019-03-24T18:13:29-07:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://briones.io/</loc>
     <lastmod>2019-03-24T18:13:29-07:00</lastmod>
     <priority>0</priority>
   </url>

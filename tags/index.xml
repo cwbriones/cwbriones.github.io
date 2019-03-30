@@ -8,10 +8,19 @@
     <language>en-us</language>
     <managingEditor>christian@briones.io (Christian Briones)</managingEditor>
     <webMaster>christian@briones.io (Christian Briones)</webMaster>
-    <lastBuildDate>Sun, 24 Mar 2019 18:13:29 -0700</lastBuildDate>
+    <lastBuildDate>Thu, 28 Mar 2019 20:21:51 -0700</lastBuildDate>
     
 	<atom:link href="https://briones.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Math</title>
+      <link>https://briones.io/tags/math/</link>
+      <pubDate>Thu, 28 Mar 2019 20:21:51 -0700</pubDate>
+      <author>christian@briones.io (Christian Briones)</author>
+      <guid>https://briones.io/tags/math/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Meta</title>
@@ -25,7 +34,7 @@
     <item>
       <title>Software</title>
       <link>https://briones.io/tags/software/</link>
-      <pubDate>Sun, 02 Apr 2017 22:01:49 +0000</pubDate>
+      <pubDate>Thu, 28 Mar 2019 20:21:51 -0700</pubDate>
       <author>christian@briones.io (Christian Briones)</author>
       <guid>https://briones.io/tags/software/</guid>
       <description></description>

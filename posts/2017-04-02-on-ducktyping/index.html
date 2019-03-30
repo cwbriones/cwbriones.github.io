@@ -16,7 +16,7 @@
 
   
   
-  <link rel="stylesheet" href="https://briones.io/main.439b3690fb2312dacb41d0e30b70f789b6d9d3d76c02b26c639e952557eac020.css" integrity="sha256-Q5s2kPsjEtrLQdDjC3D3ibbZ09dsArJsY56VJVfqwCA=">
+  <link rel="stylesheet" href="https://briones.io/main.1c10fa412430e5301e9f30b6b79fc8e3922818c42048ecec216411e8dd4c9d78.css" integrity="sha256-HBD6QSQw5TAenzC2t5/I45IoGMQgSOzsIWQR6N1MnXg=">
 
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700">
 
@@ -46,6 +46,9 @@
 
 
 
+
+
+
 <article class="post">
   <header class="post-header">
     <h1>On Duck-Typing</h1>
@@ -67,7 +70,9 @@
   </header>
   <div class="post-content">
     
-    <p><strong>Note: The following is written with Python in mind, but the idea just as easily applies to something like JavaScript with a s/isinstance/instanceof/g, among other things.</strong></p>
+    <aside>
+The following is written with Python in mind, but the idea just as easily applies to something like JavaScript with a s/isinstance/instanceof/g, among other things.
+</aside>
 
 <p>Let&rsquo;s say you&rsquo;re writing a database pooling service <sup class="footnote-ref" id="fnref:1"><a href="#fn:1">1</a></sup> in Python, and have something like this:</p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007020;font-weight:bold">class</span> <span style="color:#0e84b5;font-weight:bold">MyDBPool</span>(<span style="color:#007020">object</span>):
